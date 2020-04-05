@@ -1,0 +1,27 @@
+unit UConfiguracao;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UModelo, Vcl.StdCtrls, Vcl.ComCtrls,
+  Vcl.DBCtrls, Vcl.ExtCtrls;
+
+type
+  TFConfiguracao = class(TFModelo)
+    Label1: TLabel;
+    Label2: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FConfiguracao: TFConfiguracao;
+
+implementation
+
+{$R *.dfm}
+
+end.

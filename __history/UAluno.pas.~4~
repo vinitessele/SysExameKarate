@@ -1,0 +1,26 @@
+unit UAluno;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UModelo, Vcl.ComCtrls, Vcl.ExtCtrls,
+  Vcl.DBCtrls, Vcl.ToolWin, Data.DB, Vcl.StdCtrls, Vcl.Mask;
+
+type
+  TFCadAluno = class(TFModelo)
+    DataSource1: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FCadAluno: TFCadAluno;
+
+implementation
+
+{$R *.dfm}
+
+end.

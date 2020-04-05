@@ -1,0 +1,81 @@
+inherited FGrupo: TFGrupo
+  Caption = 'Grupo'
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel [0]
+    Left = 16
+    Top = 64
+    Width = 11
+    Height = 13
+    Caption = 'ID'
+    FocusControl = DBEdit1
+  end
+  object Label2: TLabel [1]
+    Left = 16
+    Top = 104
+    Width = 46
+    Height = 13
+    Caption = 'Descri'#231#227'o'
+    FocusControl = DBEdit2
+  end
+  inherited PanelTooBar: TPanel
+    inherited DBNavigator1: TDBNavigator
+      DataSource = DataSource1
+    end
+  end
+  inherited StatusBar1: TStatusBar
+    ExplicitLeft = 0
+    ExplicitTop = 458
+    ExplicitWidth = 764
+  end
+  object DBEdit1: TDBEdit
+    Left = 16
+    Top = 80
+    Width = 134
+    Height = 21
+    DataField = 'grupotecnica_id'
+    DataSource = DataSource1
+    Enabled = False
+    TabOrder = 2
+  end
+  object DBEdit2: TDBEdit
+    Left = 16
+    Top = 120
+    Width = 654
+    Height = 21
+    DataField = 'grupotecnica_descricao'
+    DataSource = DataSource1
+    TabOrder = 3
+  end
+  object DBGrid1: TDBGrid
+    Left = 16
+    Top = 160
+    Width = 740
+    Height = 120
+    DataSource = DataSource1
+    TabOrder = 4
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'grupotecnica_id'
+        Title.Alignment = taCenter
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'grupotecnica_descricao'
+        Title.Alignment = taCenter
+        Visible = True
+      end>
+  end
+  object DataSource1: TDataSource
+    DataSet = DM.FDQGrupo
+    Left = 360
+    Top = 80
+  end
+end

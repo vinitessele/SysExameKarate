@@ -1,0 +1,25 @@
+unit UFaixa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UModelo, Vcl.ComCtrls, Vcl.DBCtrls,
+  Vcl.ExtCtrls;
+
+type
+  TFFaixa = class(TFModelo)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FFaixa: TFFaixa;
+
+implementation
+
+{$R *.dfm}
+
+end.

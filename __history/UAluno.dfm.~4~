@@ -1,0 +1,15 @@
+inherited FCadAluno: TFCadAluno
+  Caption = 'Cadastro de Aluno'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited ToolBar1: TToolBar
+    inherited DBNavigator1: TDBNavigator
+      Hints.Strings = ()
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = DM.FDQAluno
+    Left = 496
+    Top = 56
+  end
+end
