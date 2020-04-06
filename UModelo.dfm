@@ -5,7 +5,7 @@ object FModelo: TFModelo
   ClientHeight = 477
   ClientWidth = 764
   Color = clBtnFace
-  DefaultMonitor = dmDesktop
+  DefaultMonitor = dmMainForm
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

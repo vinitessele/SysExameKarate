@@ -1,10 +1,11 @@
 object FPesquisa: TFPesquisa
   Left = 0
   Top = 0
-  Caption = 'FPesquisa'
-  ClientHeight = 268
+  Caption = 'Pesquisar nome do aluno'
+  ClientHeight = 258
   ClientWidth = 559
   Color = clBtnFace
+  DefaultMonitor = dmMainForm
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -542,44 +543,80 @@ object FPesquisa: TFPesquisa
     0000000009FFFFE90000000097FFFFF4400000022FFFFFF9100000089FFFFFFE
     440000227FFFFFFF94000009FFFFFFFFEA000057FFFFFFFFF50000AFFFFF}
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
     Width = 559
-    Height = 268
+    Height = 258
     Align = alClient
     Caption = 'Pesquisa'
     TabOrder = 0
-    ExplicitHeight = 265
-    object btnPesquisa: TSpeedButton
-      Left = 455
-      Top = 56
-      Width = 82
-      Height = 22
-      Hint = 'Pesquisa'
-      Caption = 'Pesquisa'
-      Flat = True
+    object Label1: TLabel
+      Left = 16
+      Top = 223
+      Width = 168
+      Height = 13
+      Caption = '^2 cliques para selecionar e fechar'
     end
     object EditPesquisa: TEdit
       Left = 16
-      Top = 56
-      Width = 433
+      Top = 29
+      Width = 521
       Height = 21
       TabOrder = 0
+      OnChange = EditPesquisaChange
     end
     object DBGrid1: TDBGrid
       Left = 16
-      Top = 96
+      Top = 57
       Width = 521
-      Height = 153
+      Height = 160
+      DataSource = DataSource1
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
+      OnDblClick = DBGrid1DblClick
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'aluno_id'
+          Title.Alignment = taCenter
+          Title.Caption = 'ID'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'aluno_nome'
+          Title.Alignment = taCenter
+          Title.Caption = 'Nome'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'aluno_celular'
+          Title.Alignment = taCenter
+          Title.Caption = 'Celular'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'aluno_email'
+          Title.Alignment = taCenter
+          Title.Caption = 'E-Mail'
+          Visible = True
+        end>
     end
+  end
+  object DataSource1: TDataSource
+    DataSet = DM.FDQAlunoByNome
+    Left = 392
+    Top = 80
   end
 end

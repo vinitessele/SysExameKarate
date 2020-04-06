@@ -5,6 +5,7 @@ object FPesquisa: TFPesquisa
   ClientHeight = 258
   ClientWidth = 559
   Color = clBtnFace
+  DefaultMonitor = dmMainForm
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

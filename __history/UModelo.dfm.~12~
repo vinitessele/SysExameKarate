@@ -1,10 +1,11 @@
-object FPesquisa: TFPesquisa
+object FModelo: TFModelo
   Left = 0
   Top = 0
-  Caption = 'FPesquisa'
-  ClientHeight = 268
-  ClientWidth = 559
+  Caption = 'Modelo'
+  ClientHeight = 477
+  ClientWidth = 764
   Color = clBtnFace
+  DefaultMonitor = dmDesktop
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -542,87 +543,55 @@ object FPesquisa: TFPesquisa
     0000000009FFFFE90000000097FFFFF4400000022FFFFFF9100000089FFFFFFE
     440000227FFFFFFF94000009FFFFFFFFEA000057FFFFFFFFF50000AFFFFF}
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
-  object GroupBox1: TGroupBox
+  object PanelTooBar: TPanel
     Left = 0
     Top = 0
-    Width = 559
-    Height = 268
-    Align = alClient
-    Caption = 'Pesquisa'
+    Width = 764
+    Height = 57
+    Align = alTop
     TabOrder = 0
-    ExplicitHeight = 265
-    object btnPesquisa: TSpeedButton
-      Left = 455
-      Top = 56
-      Width = 82
-      Height = 22
-      Hint = 'Pesquisa'
-      Caption = 'Pesquisa'
+    object DBNavigator1: TDBNavigator
+      Left = 8
+      Top = 8
+      Width = 700
+      Height = 41
       Flat = True
-    end
-    object EditPesquisa: TEdit
-      Left = 16
-      Top = 56
-      Width = 433
-      Height = 21
+      Hints.Strings = (
+        'Primeiro record'
+        'Anterior record'
+        'Pr'#243'ximo record'
+        'Ultimo record'
+        'Inserir record'
+        'Excluir record'
+        'Editar record'
+        'Salvar edit'
+        'Cancelar edit'
+        'Atualizar data'
+        'Apply updates'
+        'Cancel updates')
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 0
-      OnChange = EditPesquisaChange
-    end
-    object DBGrid1: TDBGrid
-      Left = 16
-      Top = 96
-      Width = 521
-      Height = 153
-      DataSource = DataSource1
-      TabOrder = 1
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -11
-      TitleFont.Name = 'Tahoma'
-      TitleFont.Style = []
-      Columns = <
-        item
-          Expanded = False
-          FieldName = 'aluno_id'
-          Title.Alignment = taCenter
-          Title.Caption = 'ID'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'aluno_cpf'
-          Title.Alignment = taCenter
-          Title.Caption = 'CPF'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'aluno_nome'
-          Title.Alignment = taCenter
-          Title.Caption = 'Nome'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'aluno_celular'
-          Title.Alignment = taCenter
-          Title.Caption = 'Celular'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'aluno_email'
-          Title.Alignment = taCenter
-          Title.Caption = 'E-Mail'
-          Visible = True
-        end>
     end
   end
-  object DataSource1: TDataSource
-    DataSet = DM.FDQAlunoByNome
-    Left = 392
-    Top = 80
+  object StatusBar1: TStatusBar
+    Left = 0
+    Top = 458
+    Width = 764
+    Height = 19
+    Panels = <
+      item
+        Width = 200
+      end
+      item
+        Text = '***Vnt - Tecnlogia*** 44-999168055'
+        Width = 250
+      end
+      item
+        Width = 50
+      end>
   end
 end
