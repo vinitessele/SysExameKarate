@@ -698,7 +698,6 @@ object FExame: TFExame
     Align = alTop
     Caption = 'Dados do exame para filtro'
     TabOrder = 0
-    ExplicitLeft = 24
     object Label1: TLabel
       Left = 662
       Top = 14
@@ -752,7 +751,7 @@ object FExame: TFExame
       OnClick = btnCarregarClick
     end
     object Label4: TLabel
-      Left = 238
+      Left = 255
       Top = 15
       Width = 67
       Height = 19
@@ -870,9 +869,6 @@ object FExame: TFExame
       item
         Width = 50
       end>
-    ExplicitLeft = 8
-    ExplicitTop = 86
-    ExplicitWidth = 779
   end
   object DBGrid1: TDBGrid
     Left = 8
@@ -898,11 +894,6 @@ object FExame: TFExame
       item
         Expanded = False
         FieldName = 'tecnica_descricao'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'Tahoma'
-        Font.Style = []
         Title.Alignment = taCenter
         Title.Caption = 'T'#233'cnica'
         Width = 302
@@ -912,11 +903,6 @@ object FExame: TFExame
         Alignment = taCenter
         Expanded = False
         FieldName = 'Grupo'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'Tahoma'
-        Font.Style = []
         Title.Alignment = taCenter
         Width = 131
         Visible = True
@@ -925,11 +911,6 @@ object FExame: TFExame
         Alignment = taCenter
         Expanded = False
         FieldName = 'exame_nota'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'Tahoma'
-        Font.Style = []
         Title.Alignment = taCenter
         Title.Caption = 'Nota'
         Width = 109

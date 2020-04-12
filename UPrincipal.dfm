@@ -2081,6 +2081,10 @@ object FPrincipal: TFPrincipal
     Top = 16
     object Cadastro1: TMenuItem
       Caption = '&Cadastros'
+      object Academia1: TMenuItem
+        Caption = 'Aca&demia'
+        OnClick = Academia1Click
+      end
       object Aluno1: TMenuItem
         Caption = '&Aluno'
         OnClick = Aluno1Click
@@ -2090,7 +2094,7 @@ object FPrincipal: TFPrincipal
         OnClick = tecnicas1Click
       end
       object Grupo1: TMenuItem
-        Caption = 'Grupo'
+        Caption = '&Grupo'
         OnClick = Grupo1Click
       end
       object Faixas1: TMenuItem
@@ -2098,21 +2102,37 @@ object FPrincipal: TFPrincipal
         OnClick = Faixas1Click
       end
       object FaixasxTcnicas1: TMenuItem
-        Caption = 'Faixas x T'#233'cnicas'
+        Caption = 'Fai&xas x T'#233'cnicas'
         OnClick = FaixasxTcnicas1Click
       end
       object Exame1: TMenuItem
-        Caption = 'Exame'
+        Caption = '&Exame'
         OnClick = Exame1Click
       end
       object ConfiguraoBancoDados1: TMenuItem
-        Caption = 'Configura'#231#227'o '
+        Caption = '&Configura'#231#227'o '
         OnClick = ConfiguraoBancoDados1Click
       end
     end
     object Realizacao1: TMenuItem
       Caption = 'Exame de Faixa'
-      OnClick = Realizacao1Click
+      object Impresso1: TMenuItem
+        Caption = '&Impress'#227'o'
+        object FichadeExameporaluno1: TMenuItem
+          Caption = 'Ficha de Exame por aluno'
+        end
+        object Resumosomentemdias1: TMenuItem
+          Caption = 'Resumo (somente m'#233'dias)'
+          OnClick = Resumosomentemdias1Click
+        end
+        object FichaemBranco1: TMenuItem
+          Caption = 'Ficha em Branco'
+        end
+      end
+      object ExamedeFaixa1: TMenuItem
+        Caption = '&Lancto notas Exame'
+        OnClick = ExamedeFaixa1Click
+      end
     end
   end
 end

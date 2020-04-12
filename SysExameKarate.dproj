@@ -5,7 +5,7 @@
         <FrameworkType>VCL</FrameworkType>
         <MainSource>SysExameKarate.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -153,6 +153,14 @@
         </DCCReference>
         <DCCReference Include="UConfiguracao.pas">
             <Form>FConfiguracao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UAcademia.pas">
+            <Form>FAcademia</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UResumo.pas">
+            <Form>FResumo</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

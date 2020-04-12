@@ -8,7 +8,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UModelo, Vcl.ComCtrls, Vcl.DBCtrls,
   Vcl.ExtCtrls, Vcl.StdCtrls, System.Rtti, System.Bindings.Outputs,
   Vcl.Bind.Editors, Data.Bind.EngExt, Vcl.Bind.DBEngExt, Data.Bind.Components,
-  Data.Bind.DBScope;
+  Data.Bind.DBScope, Vcl.Imaging.pngimage;
 
 type
   TFFaixaTecnica = class(TFModelo)
@@ -42,6 +42,7 @@ type
     LinkListControlToField5: TLinkListControlToField;
     BindSourceDB6: TBindSourceDB;
     LinkListControlToField6: TLinkListControlToField;
+    Image2: TImage;
     procedure ComboBox1Change(Sender: TObject);
     procedure ListViewTecnicasDblClick(Sender: TObject);
     procedure FormShow(Sender: TObject);

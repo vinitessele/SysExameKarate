@@ -34,7 +34,7 @@ uses UDM;
 
 procedure TFPesquisa.DBGrid1DblClick(Sender: TObject);
 begin
-Close;
+  Close;
 end;
 
 procedure TFPesquisa.EditPesquisaChange(Sender: TObject);

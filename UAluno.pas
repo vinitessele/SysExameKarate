@@ -3,9 +3,13 @@ unit UAluno;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UModelo, Data.DB, Vcl.StdCtrls,
-  Vcl.Mask, Vcl.DBCtrls, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids;
+  Vcl.Mask, Vcl.DBCtrls, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids,
+  System.Rtti, System.Bindings.Outputs, Vcl.Bind.Editors, Data.Bind.EngExt,
+  Vcl.Bind.DBEngExt, Data.Bind.Components, Data.Bind.DBScope, Vcl.Buttons,
+  Vcl.ExtDlgs;
 
 type
   TFAluno = class(TFModelo)
@@ -20,9 +24,21 @@ type
     DBEdit4: TDBEdit;
     Label5: TLabel;
     DBEdit5: TDBEdit;
-    Label6: TLabel;
     DBEdit6: TDBEdit;
     DBGrid1: TDBGrid;
+    Label7: TLabel;
+    Label8: TLabel;
+    ComboBox1: TComboBox;
+    BindSourceDB1: TBindSourceDB;
+    BindingsList1: TBindingsList;
+    LinkFillControlToField1: TLinkFillControlToField;
+    BindSourceDB2: TBindSourceDB;
+    DBImage2: TDBImage;
+    btnFoto: TBitBtn;
+    OpenPictureDialog1: TOpenPictureDialog;
+    procedure ComboBox1Exit(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btnFotoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,5 +51,31 @@ var
 implementation
 
 {$R *.dfm}
+
+uses UDM;
+
+procedure TFAluno.btnFotoClick(Sender: TObject);
+begin
+  inherited;
+  If OpenPictureDialog1.Execute Then
+  begin
+    DBImage2.Picture.LoadFromFile(OpenPictureDialog1.FileName);
+    DBImage2.Stretch := True;
+  end;
+end;
+
+procedure TFAluno.ComboBox1Exit(Sender: TObject);
+begin
+  inherited;
+  dm.FDQAlunoalunoacademia_id.AsInteger := dm.FDQAcademiaacademia_id.AsInteger;
+end;
+
+procedure TFAluno.FormShow(Sender: TObject);
+begin
+  inherited;
+  dm.FDQAcademia.Active := True;
+  dm.FDQAcademia.Close;
+  dm.FDQAcademia.Open();
+end;
 
 end.

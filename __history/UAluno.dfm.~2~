@@ -1,5 +1,0 @@
-inherited FCadAluno: TFCadAluno
-  Caption = 'Cadastro de Aluno'
-  PixelsPerInch = 96
-  TextHeight = 13
-end

@@ -1,5 +1,6 @@
 inherited FAluno: TFAluno
   Caption = 'Cadastro de Aluno'
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel [0]
@@ -42,13 +43,20 @@ inherited FAluno: TFAluno
     Caption = 'E-Mail'
     FocusControl = DBEdit5
   end
-  object Label6: TLabel [5]
+  object Label7: TLabel [5]
     Left = 16
-    Top = 272
+    Top = 277
     Width = 58
     Height = 13
     Caption = 'Observa'#231#227'o'
     FocusControl = DBEdit6
+  end
+  object Label8: TLabel [6]
+    Left = 322
+    Top = 277
+    Width = 46
+    Height = 13
+    Caption = 'Academia'
   end
   inherited PanelTooBar: TPanel
     inherited DBNavigator1: TDBNavigator
@@ -104,7 +112,7 @@ inherited FAluno: TFAluno
   end
   object DBEdit6: TDBEdit
     Left = 16
-    Top = 288
+    Top = 291
     Width = 300
     Height = 21
     DataField = 'aluno_observacao'
@@ -113,7 +121,7 @@ inherited FAluno: TFAluno
   end
   object DBGrid1: TDBGrid
     Left = 16
-    Top = 315
+    Top = 318
     Width = 740
     Height = 137
     DataSource = DataSource1
@@ -143,6 +151,7 @@ inherited FAluno: TFAluno
         FieldName = 'aluno_nome'
         Title.Alignment = taCenter
         Title.Caption = 'Nome'
+        Width = 219
         Visible = True
       end
       item
@@ -157,6 +166,7 @@ inherited FAluno: TFAluno
         FieldName = 'aluno_email'
         Title.Alignment = taCenter
         Title.Caption = 'E-Mail'
+        Width = 184
         Visible = True
       end
       item
@@ -167,9 +177,90 @@ inherited FAluno: TFAluno
         Visible = True
       end>
   end
+  object ComboBox1: TComboBox
+    Left = 322
+    Top = 291
+    Width = 145
+    Height = 21
+    TabOrder = 9
+    Text = 'Dojo Tessele'
+    Items.Strings = (
+      'Dojo Tessele'
+      'Aguas Claras')
+  end
+  object DBImage2: TDBImage
+    Left = 544
+    Top = 63
+    Width = 212
+    Height = 218
+    DataField = 'aluno_img'
+    DataSource = DataSource1
+    Stretch = True
+    TabOrder = 10
+  end
+  object btnFoto: TBitBtn
+    Left = 633
+    Top = 287
+    Width = 75
+    Height = 25
+    Hint = 'Inserir logo da academia'
+    Caption = 'Foto'
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000130B0000130B00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333330070
+      7700333333337777777733333333008088003333333377F73377333333330088
+      88003333333377FFFF7733333333000000003FFFFFFF77777777000000000000
+      000077777777777777770FFFFFFF0FFFFFF07F3333337F3333370FFFFFFF0FFF
+      FFF07F3FF3FF7FFFFFF70F00F0080CCC9CC07F773773777777770FFFFFFFF039
+      99337F3FFFF3F7F777F30F0000F0F09999937F7777373777777F0FFFFFFFF999
+      99997F3FF3FFF77777770F00F000003999337F773777773777F30FFFF0FF0339
+      99337F3FF7F3733777F30F08F0F0337999337F7737F73F7777330FFFF0039999
+      93337FFFF7737777733300000033333333337777773333333333}
+    NumGlyphs = 2
+    TabOrder = 11
+    OnClick = btnFotoClick
+  end
   object DataSource1: TDataSource
     DataSet = DM.FDQAluno
-    Left = 648
+    Left = 232
     Top = 80
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = DM.FDQAcademia
+    ScopeMappings = <>
+    Left = 344
+    Top = 72
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkFillControlToField1: TLinkFillControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      FieldName = 'alunoacademia_id'
+      Control = ComboBox1
+      Track = True
+      FillDataSource = BindSourceDB1
+      FillValueFieldName = 'academia_id'
+      FillDisplayFieldName = 'academia_nome'
+      AutoFill = True
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = DM.FDQAluno
+    ScopeMappings = <>
+    Left = 288
+    Top = 72
+  end
+  object OpenPictureDialog1: TOpenPictureDialog
+    Left = 416
+    Top = 152
   end
 end

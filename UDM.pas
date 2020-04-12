@@ -127,6 +127,33 @@ type
     FDQExameNotaGrupo: TStringField;
     FDQMediaExame: TFDQuery;
     FDQMediaExamemedia: TWideStringField;
+    FDQAcademia: TFDQuery;
+    FDQAcademiaacademia_id: TFDAutoIncField;
+    FDQAcademiaacademia_nome: TStringField;
+    FDQAcademiaacademia_logo: TBlobField;
+    FDQAlunoalunoacademia_id: TIntegerField;
+    FDQAlunoAcademia: TStringField;
+    FDQAlunoaluno_img: TBlobField;
+    FDQListaAlunoExame: TFDQuery;
+    FDQListaAlunoExameexame_id: TFDAutoIncField;
+    FDQListaAlunoExameexamealuno_id: TIntegerField;
+    FDQListaAlunoExameexame_data: TDateField;
+    FDQListaAlunoExameexamefaixa_id: TIntegerField;
+    FDQListaAlunoExamealuno_id: TIntegerField;
+    FDQListaAlunoExamealuno_cpf: TStringField;
+    FDQListaAlunoExamealuno_nome: TStringField;
+    FDQListaAlunoExamealuno_celular: TStringField;
+    FDQListaAlunoExamealuno_email: TStringField;
+    FDQListaAlunoExamealuno_observacao: TStringField;
+    FDQListaAlunoExamealunoacademia_id: TIntegerField;
+    FDQListaAlunoExamealuno_img: TBlobField;
+    FDQListaAlunoExamefaixa_id: TIntegerField;
+    FDQListaAlunoExamefaixa_descricao: TStringField;
+    FDQListTecnicasAlunoMedias: TFDQuery;
+    FDQListTecnicasAlunoMediasmedia: TWideStringField;
+    FDQListTecnicasAlunoMediasGrupo: TStringField;
+    FDQListaAlunoExameacademia_nome: TStringField;
+    FDQListaAlunoExameacademia_logo: TBlobField;
     procedure FDQTecnicaBeforeInsert(DataSet: TDataSet);
     procedure FDQTecnicaBeforeEdit(DataSet: TDataSet);
     procedure FDQTecnicaAfterInsert(DataSet: TDataSet);
@@ -163,7 +190,7 @@ begin
   ArqIni.Free;
   strPath := System.IOUtils.TPath.Combine(System.IOUtils.TPath.GetDocumentsPath,
     caminho + 'Bd.db');
-  FDConnection1.Params.Values['DATABASE'] := strPath;
+//  FDConnection1.Params.Values['DATABASE'] := strPath;
 end;
 
 procedure TDM.FDQExameNotaexame_notaValidate(Sender: TField);

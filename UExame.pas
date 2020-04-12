@@ -8,7 +8,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UModelo, Vcl.ComCtrls, Vcl.DBCtrls,
   Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons,
   System.Rtti, System.Bindings.Outputs, Vcl.Bind.Editors, Data.Bind.EngExt,
-  Vcl.Bind.DBEngExt, Data.Bind.Components, Data.Bind.DBScope;
+  Vcl.Bind.DBEngExt, Data.Bind.Components, Data.Bind.DBScope,
+  Vcl.Imaging.pngimage;
 
 type
   TFCadExame = class(TFModelo)
@@ -30,6 +31,8 @@ type
     Label3: TLabel;
     EditDataAlteracao: TEdit;
     btnAlterar: TButton;
+    Image2: TImage;
+    Image1: TImage;
     procedure btnpesquisaClick(Sender: TObject);
     procedure btnCarregarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -68,7 +71,7 @@ begin
   if EditNome.Text = EmptyStr then
   begin
     ShowMessage('Selecione o aluno primeiro');
-    Exit;
+    Abort;
   end;
 
   dm.FDQValidaAlunoExame.Active := True;
@@ -121,6 +124,12 @@ begin
       dm.FDQListTecnicaFaixa.Next;
     end;
   end;
+  EditDataAlteracao.Text := dm.FDQValidaAlunoExameexame_data.AsString;
+  dm.FDQListTecnicasAlunoNotas.Active := True;
+  dm.FDQListTecnicasAlunoNotas.Close;
+  dm.FDQListTecnicasAlunoNotas.ParamByName('exame').AsInteger :=
+    dm.FDQValidaAlunoExameexame_id.AsInteger;
+  dm.FDQListTecnicasAlunoNotas.Open();
 end;
 
 procedure TFCadExame.btnpesquisaClick(Sender: TObject);
