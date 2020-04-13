@@ -3,7 +3,7 @@ object FResumo: TFResumo
   Top = 0
   Caption = 'Resumo por Aluno'
   ClientHeight = 325
-  ClientWidth = 653
+  ClientWidth = 660
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -546,8 +546,8 @@ object FResumo: TFResumo
   PixelsPerInch = 96
   TextHeight = 13
   object Image2: TImage
-    Left = 268
-    Top = 20
+    Left = 247
+    Top = 19
     Width = 38
     Height = 38
     Picture.Data = {
@@ -623,19 +623,6 @@ object FResumo: TFResumo
     Height = 13
     Caption = '^2 Clique para Imprimir'
   end
-  object Label1: TLabel
-    Left = 8
-    Top = 11
-    Width = 27
-    Height = 13
-    Caption = 'Aluno'
-  end
-  object Image1: TImage
-    Left = 665
-    Top = 64
-    Width = 120
-    Height = 89
-  end
   object EditNome: TEdit
     Left = 8
     Top = 27
@@ -685,7 +672,7 @@ object FResumo: TFResumo
   end
   object DataSource1: TDataSource
     DataSet = DM.FDQListaAlunoExame
-    Left = 592
+    Left = 456
     Top = 16
   end
 end

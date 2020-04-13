@@ -927,8 +927,7 @@ object DM: TDM
       'select * from exame e'
       'inner join aluno a on e.examealuno_id = a.aluno_id'
       'inner join faixa f on e.examefaixa_id = f.faixa_id'
-      'inner join academia ac on ac.academia_id = a.alunoacademia_id'
-      'order by exame_data desc')
+      'inner join academia ac on ac.academia_id = a.alunoacademia_id')
     Left = 256
     Top = 392
     object FDQListaAlunoExameexame_id: TFDAutoIncField
@@ -1045,7 +1044,7 @@ object DM: TDM
     Active = True
     Connection = FDConnection1
     SQL.Strings = (
-      'select avg(exame_nota) media, Grupo from exametecnica et'
+      'select  avg(grupo)as media, Grupo from exametecnica et'
       'inner join tecnica t on t.tecnica_id = et.exametecnicatecnica_id'
       'where et.exame_id = :exame'
       'and grupo = :grupo'

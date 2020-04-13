@@ -967,8 +967,8 @@ object FExame: TFExame
   object BindSourceDB1: TBindSourceDB
     DataSet = DM.FDQExame
     ScopeMappings = <>
-    Left = 512
-    Top = 48
+    Left = 520
+    Top = 24
   end
   object BindingsList1: TBindingsList
     Methods = <>
@@ -997,8 +997,8 @@ object FExame: TFExame
   object BindSourceDB2: TBindSourceDB
     DataSet = DM.FDQGrupo
     ScopeMappings = <>
-    Left = 456
-    Top = 56
+    Left = 440
+    Top = 24
   end
   object DataSource1: TDataSource
     DataSet = DM.FDQExameNota

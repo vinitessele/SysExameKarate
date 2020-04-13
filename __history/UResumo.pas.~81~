@@ -51,31 +51,32 @@ end;
 procedure TFResumo.DBGrid1DblClick(Sender: TObject);
 var
   Word: OleVariant;
+  imagem: TImage;
+  StreamImg: TStream;
   vFoto: TStream;
-  caminho: string;
-  Temp: TBitmap;
 begin
 
   try
 
     // Pega o grafico da Tabela
     // Imagem.Picture.LoadFromFile(dm.FDQListaAlunoExame.FieldByName('academia_logo').AsString);
-    caminho := (ExtractFilePath(Application.ExeName) + 'MeuArquivo.jpg');
-
     vFoto := dm.FDQListaAlunoExame.CreateBlobStream
       (dm.FDQListaAlunoExame.FieldByName('academia_logo'), bmRead);
     if vFoto.Size > 0 then
     begin
-      Image1.Picture.LoadFromStream(vFoto);
-      // Desenha
-      Temp := TBitmap.Create;
-      Temp.Canvas.StretchDraw(Rect(0, 0, 50, 50), Image1);
-      Temp.SaveToFile(caminho);
-      //Image1.Picture.SaveToFile(caminho);
+      Image1.Picture.Bitmap.LoadFromStream(vFoto);
     end;
+    // CircleFotoCliente.Fill.Bitmap.Bitmap.SaveToStream(StreamImg);
+    // dm.FDQClienteAllcliente_img.LoadFromStream(StreamImg);
 
+    // vFoto := dm.FDQListaAlunoExame.CreateBlobStream
+    // (dm.FDQListaAlunoExame.FieldByName('academia_logo'), bmRead);
+    // imagem.Picture.LoadFromStream(vFoto);
+    // Desenha
+    // imagem.Picture.SaveToFile(ExtractFilePath(Application.ExeName) +
+    // 'MeuArquivo.jpg');
   finally
-    Image1.Free;
+    imagem.Free;
   end;
 
   Path := ExtractFilePath(Application.ExeName);
@@ -84,7 +85,7 @@ begin
   Word.AppShow;
   Word.Appmaximize;
   Word.CenterPara;
-  Word.Insertpicture(caminho);
+  // Word.Insertpicture(Path + '\Imagem1.jpg');
   Word.FontSize(18);
   Word.Insert('Ficha de Exame médias');
   Word.FontSize(12);

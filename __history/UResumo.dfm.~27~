@@ -3,7 +3,7 @@ object FResumo: TFResumo
   Top = 0
   Caption = 'Resumo por Aluno'
   ClientHeight = 325
-  ClientWidth = 653
+  ClientWidth = 774
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -631,10 +631,10 @@ object FResumo: TFResumo
     Caption = 'Aluno'
   end
   object Image1: TImage
-    Left = 665
+    Left = 661
     Top = 64
-    Width = 120
-    Height = 89
+    Width = 105
+    Height = 217
   end
   object EditNome: TEdit
     Left = 8

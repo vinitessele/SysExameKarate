@@ -53,7 +53,6 @@ var
   Word: OleVariant;
   vFoto: TStream;
   caminho: string;
-  Temp: TBitmap;
 begin
 
   try
@@ -68,10 +67,8 @@ begin
     begin
       Image1.Picture.LoadFromStream(vFoto);
       // Desenha
-      Temp := TBitmap.Create;
-      Temp.Canvas.StretchDraw(Rect(0, 0, 50, 50), Image1);
-      Temp.SaveToFile(caminho);
-      //Image1.Picture.SaveToFile(caminho);
+      Image1.Canvas.StretchDraw((Rect(0, 0, 10, 10), Image1);
+      Image1.Picture.SaveToFile(caminho);
     end;
 
   finally

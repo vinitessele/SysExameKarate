@@ -3,7 +3,7 @@ object FResumo: TFResumo
   Top = 0
   Caption = 'Resumo por Aluno'
   ClientHeight = 325
-  ClientWidth = 653
+  ClientWidth = 660
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -546,8 +546,8 @@ object FResumo: TFResumo
   PixelsPerInch = 96
   TextHeight = 13
   object Image2: TImage
-    Left = 268
-    Top = 20
+    Left = 404
+    Top = 22
     Width = 38
     Height = 38
     Picture.Data = {
@@ -630,11 +630,12 @@ object FResumo: TFResumo
     Height = 13
     Caption = 'Aluno'
   end
-  object Image1: TImage
-    Left = 665
-    Top = 64
-    Width = 120
-    Height = 89
+  object Label2: TLabel
+    Left = 247
+    Top = 11
+    Width = 58
+    Height = 13
+    Caption = 'Data Exame'
   end
   object EditNome: TEdit
     Left = 8
@@ -682,6 +683,22 @@ object FResumo: TFResumo
         Width = 144
         Visible = True
       end>
+  end
+  object EditData: TEdit
+    Left = 247
+    Top = 28
+    Width = 121
+    Height = 21
+    TabOrder = 2
+  end
+  object DateTimePicker1: TDateTimePicker
+    Left = 466
+    Top = 27
+    Width = 186
+    Height = 21
+    Date = 43934.000000000000000000
+    Time = 0.665341585649002800
+    TabOrder = 3
   end
   object DataSource1: TDataSource
     DataSet = DM.FDQListaAlunoExame

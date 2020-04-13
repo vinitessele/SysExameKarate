@@ -1045,7 +1045,7 @@ object DM: TDM
     Active = True
     Connection = FDConnection1
     SQL.Strings = (
-      'select avg(exame_nota) media, Grupo from exametecnica et'
+      'select  avg(grupo)as media, Grupo from exametecnica et'
       'inner join tecnica t on t.tecnica_id = et.exametecnicatecnica_id'
       'where et.exame_id = :exame'
       'and grupo = :grupo'
