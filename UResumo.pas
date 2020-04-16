@@ -24,10 +24,13 @@ type
     procedure btnpesquisaClick(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
+
   private
     { Private declarations }
+
   public
     { Public declarations }
+    function PadronizaTamanho(Imagem: TBitmap; W, H: Integer): TBitmap;
   end;
 
 var
@@ -42,6 +45,22 @@ implementation
 
 uses UDM, UPrincipal, UPesquisa;
 
+function TFResumo.PadronizaTamanho(Imagem: TBitmap; W, H: Integer): TBitmap;
+var
+  B: TBitmap;
+begin
+  B := TBitmap.Create;
+  try
+    B.Width := W;
+    B.Height := H;
+    B.Canvas.StretchDraw(Rect(0, 0, W, H), Imagem);
+    Result := Imagem.Create;
+    Result.Assign(B);
+  finally
+    B.Free;
+  end;
+end;
+
 procedure TFResumo.btnpesquisaClick(Sender: TObject);
 begin
   FPesquisa.ShowModal;
@@ -54,10 +73,10 @@ var
   vFoto: TStream;
   caminho: string;
   Temp: TBitmap;
+  Rect: TRect;
 begin
 
   try
-
     // Pega o grafico da Tabela
     // Imagem.Picture.LoadFromFile(dm.FDQListaAlunoExame.FieldByName('academia_logo').AsString);
     caminho := (ExtractFilePath(Application.ExeName) + 'MeuArquivo.jpg');
@@ -67,11 +86,15 @@ begin
     if vFoto.Size > 0 then
     begin
       Image1.Picture.LoadFromStream(vFoto);
-      // Desenha
       Temp := TBitmap.Create;
-      Temp.Canvas.StretchDraw(Rect(0, 0, 50, 50), Image1);
-      Temp.SaveToFile(caminho);
-      //Image1.Picture.SaveToFile(caminho);
+      Temp.Assign(Image1.Picture.Graphic);
+      Temp := PadronizaTamanho(Temp, 80, 80);
+      try
+        Temp.SaveToFile(caminho);
+      finally
+        Temp.Free;
+      end;
+
     end;
 
   finally
@@ -85,8 +108,10 @@ begin
   Word.Appmaximize;
   Word.CenterPara;
   Word.Insertpicture(caminho);
+  Word.Insert(#13);
   Word.FontSize(18);
-  Word.Insert('Ficha de Exame médias');
+  Word.Insert(#13 + 'Ficha de Exame médias');
+  Word.Insert(#13);
   Word.FontSize(12);
   Word.LeftPara;
   Word.Insert(#13 + dm.FDQListaAlunoExamealuno_nome.AsString);
