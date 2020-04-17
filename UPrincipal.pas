@@ -25,9 +25,7 @@ type
     ConfiguraoBancoDados1: TMenuItem;
     Academia1: TMenuItem;
     Impresso1: TMenuItem;
-    FichadeExameporaluno1: TMenuItem;
     Resumosomentemdias1: TMenuItem;
-    FichaemBranco1: TMenuItem;
     ExamedeFaixa1: TMenuItem;
     procedure Aluno1Click(Sender: TObject);
     procedure tecnicas1Click(Sender: TObject);

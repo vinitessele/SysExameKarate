@@ -21,6 +21,7 @@ type
     Label7: TLabel;
     Label1: TLabel;
     Image1: TImage;
+    RadioGroup1: TRadioGroup;
     procedure btnpesquisaClick(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
@@ -89,6 +90,8 @@ begin
       Temp := TBitmap.Create;
       Temp.Assign(Image1.Picture.Graphic);
       Temp := PadronizaTamanho(Temp, 80, 80);
+      Image1.Picture := nil;
+
       try
         Temp.SaveToFile(caminho);
       finally
@@ -96,51 +99,82 @@ begin
       end;
 
     end;
+    Path := ExtractFilePath(Application.ExeName);
+    Word := CreateOleObject('Word.Basic');
+    Word.Filenew;
+    Word.AppShow;
+    Word.Appmaximize;
+    Word.CenterPara;
+    Word.Insertpicture(caminho);
+    Word.Insert(#13);
+    Word.FontSize(18);
+    // Resumo
+    if RadioGroup1.ItemIndex = 0 then
+    begin
 
+      Word.Insert(#13 + 'Ficha de Exame médias');
+      Word.Insert(#13);
+      Word.FontSize(12);
+      Word.LeftPara;
+      Word.Insert(#13 + dm.FDQListaAlunoExamealuno_nome.AsString);
+      Word.Insert(#32 + dm.FDQListaAlunoExameexame_data.AsString);
+      Word.Insert(#32 + dm.FDQListaAlunoExamefaixa_descricao.AsString);
+      dm.FDQGrupo.Active := True;
+      dm.FDQGrupo.Close;
+      dm.FDQGrupo.Open();
+      Word.Insert(#13);
+      while not dm.FDQGrupo.Eof do
+      begin
+        dm.FDQListTecnicasAlunoMedias.Active := True;
+        dm.FDQListTecnicasAlunoMedias.Close;
+        dm.FDQListTecnicasAlunoMedias.ParamByName('exame').AsInteger :=
+          dm.FDQListaAlunoExameexame_id.AsInteger;
+        dm.FDQListTecnicasAlunoMedias.ParamByName('grupo').AsString :=
+          dm.FDQGrupogrupo_descricao.AsString;
+        dm.FDQListTecnicasAlunoMedias.Open();
+        Word.FontSize(12);
+        Word.Insert(#32#32 + dm.FDQListTecnicasAlunoMediasGrupo.AsString);
+        Word.FontSize(12);
+        Word.Insert(#32#32 + dm.FDQListTecnicasAlunoMediasmedia.AsString);
+        dm.FDQGrupo.Next;
+      end;
+
+      // monta uma tabela com o texto selecionado
+      // Word.Insertpicture(Path + '\Imagem1.jpg');
+      // Word.Insert(#13'Imagem 2'#13);
+      // Word.Insertpicture(Path + '\Imagem2.jpg');
+    end
+    else if RadioGroup1.ItemIndex = 1 then
+    begin
+      Word.Insert(#13 + 'Ficha de Exame Completa');
+      Word.Insert(#13);
+      Word.FontSize(12);
+      Word.LeftPara;
+      Word.Insert(#13 + dm.FDQListaAlunoExamealuno_nome.AsString);
+      Word.Insert(#32 + dm.FDQListaAlunoExameexame_data.AsString);
+      Word.Insert(#32 + dm.FDQListaAlunoExamefaixa_descricao.AsString);
+      dm.FDQGrupo.Active := True;
+      dm.FDQGrupo.Close;
+      dm.FDQGrupo.Open();
+      Word.Insert(#13);
+
+      dm.FDQListTecnicasAlunoNotas.Active := True;
+      dm.FDQListTecnicasAlunoNotas.Close;
+      dm.FDQListTecnicasAlunoNotas.ParamByName('exame').AsInteger :=
+        dm.FDQListaAlunoExameexame_id.AsInteger;
+      dm.FDQListTecnicasAlunoNotas.Open();
+      while not dm.FDQListTecnicasAlunoNotas.Eof do
+      begin
+        Word.FontSize(12);
+        Word.Insert
+          (#13 + dm.FDQListTecnicasAlunoNotastecnica_descricao.AsString);
+        Word.Insert(#32 + dm.FDQListTecnicasAlunoNotasexame_nota.AsString);
+        dm.FDQListTecnicasAlunoNotas.Next;
+      end;
+    end;
   finally
     Image1.Free;
   end;
-
-  Path := ExtractFilePath(Application.ExeName);
-  Word := CreateOleObject('Word.Basic');
-  Word.Filenew;
-  Word.AppShow;
-  Word.Appmaximize;
-  Word.CenterPara;
-  Word.Insertpicture(caminho);
-  Word.Insert(#13);
-  Word.FontSize(18);
-  Word.Insert(#13 + 'Ficha de Exame médias');
-  Word.Insert(#13);
-  Word.FontSize(12);
-  Word.LeftPara;
-  Word.Insert(#13 + dm.FDQListaAlunoExamealuno_nome.AsString);
-  Word.Insert(#32 + dm.FDQListaAlunoExameexame_data.AsString);
-  Word.Insert(#32 + dm.FDQListaAlunoExamefaixa_descricao.AsString);
-  dm.FDQGrupo.Active := True;
-  dm.FDQGrupo.Close;
-  dm.FDQGrupo.Open();
-  Word.Insert(#13);
-  while not dm.FDQGrupo.Eof do
-  begin
-    dm.FDQListTecnicasAlunoMedias.Active := True;
-    dm.FDQListTecnicasAlunoMedias.Close;
-    dm.FDQListTecnicasAlunoMedias.ParamByName('exame').AsInteger :=
-      dm.FDQListaAlunoExameexame_id.AsInteger;
-    dm.FDQListTecnicasAlunoMedias.ParamByName('grupo').AsString :=
-      dm.FDQGrupogrupo_descricao.AsString;
-    dm.FDQListTecnicasAlunoMedias.Open();
-    Word.FontSize(12);
-    Word.Insert(#32#32 + dm.FDQListTecnicasAlunoMediasGrupo.AsString);
-    Word.FontSize(12);
-    Word.Insert(#32#32 + dm.FDQListTecnicasAlunoMediasmedia.AsString);
-    dm.FDQGrupo.Next;
-  end;
-
-  // monta uma tabela com o texto selecionado
-  // Word.Insertpicture(Path + '\Imagem1.jpg');
-  // Word.Insert(#13'Imagem 2'#13);
-  // Word.Insertpicture(Path + '\Imagem2.jpg');
 end;
 
 procedure TFResumo.Image2Click(Sender: TObject);

@@ -546,7 +546,7 @@ object FResumo: TFResumo
   PixelsPerInch = 96
   TextHeight = 13
   object Image2: TImage
-    Left = 268
+    Left = 502
     Top = 20
     Width = 38
     Height = 38
@@ -682,6 +682,20 @@ object FResumo: TFResumo
         Width = 144
         Visible = True
       end>
+  end
+  object RadioGroup1: TRadioGroup
+    Left = 247
+    Top = 8
+    Width = 249
+    Height = 50
+    Caption = 'Tipo de Impress'#227'o'
+    Columns = 2
+    ItemIndex = 0
+    Items.Strings = (
+      'Resumo'
+      'Ficha aluno'
+      'Ficha em Branco')
+    TabOrder = 2
   end
   object DataSource1: TDataSource
     DataSet = DM.FDQListaAlunoExame

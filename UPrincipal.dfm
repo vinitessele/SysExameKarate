@@ -2118,15 +2118,9 @@ object FPrincipal: TFPrincipal
       Caption = 'Exame de Faixa'
       object Impresso1: TMenuItem
         Caption = '&Impress'#227'o'
-        object FichadeExameporaluno1: TMenuItem
-          Caption = 'Ficha de Exame por aluno'
-        end
         object Resumosomentemdias1: TMenuItem
-          Caption = 'Resumo (somente m'#233'dias)'
+          Caption = 'Exame por nome'
           OnClick = Resumosomentemdias1Click
-        end
-        object FichaemBranco1: TMenuItem
-          Caption = 'Ficha em Branco'
         end
       end
       object ExamedeFaixa1: TMenuItem
