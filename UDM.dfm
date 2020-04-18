@@ -175,7 +175,7 @@ object DM: TDM
       'inner join tecnica t on t.tecnica_id = ft.tecnica_id'
       'where ft.faixa_id = :faixa'
       'order by grupo ')
-    Left = 152
+    Left = 160
     Top = 376
     ParamData = <
       item
