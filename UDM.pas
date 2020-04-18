@@ -183,14 +183,15 @@ var
   strPath: string;
 begin
   ArqIni := TIniFile.Create(extractFilePath(ParamStr(0)) + 'Conf.ini');
-  servidor := ArqIni.ReadString('SERVIDOR', 'Servidor',
-    'Erro ao ler o valor');
-  caminho := ArqIni.ReadString('SERVIDOR', 'Database',
-    'Erro ao ler o valor');
+  servidor := ArqIni.ReadString('SERVIDOR', 'Servidor', 'Erro ao ler o valor');
+  caminho := ArqIni.ReadString('SERVIDOR', 'Database', 'Erro ao ler o valor');
   ArqIni.Free;
   strPath := System.IOUtils.TPath.Combine(System.IOUtils.TPath.GetDocumentsPath,
     caminho + 'Bd.db');
-//  FDConnection1.Params.Values['DATABASE'] := strPath;
+{$IFDEF RELEASE}
+  FDConnection1.Params.Values['DATABASE'] := strPath;
+{$ELSE}
+{$ENDIF}
 end;
 
 procedure TDM.FDQExameNotaexame_notaValidate(Sender: TField);

@@ -2065,6 +2065,7 @@ object FPrincipal: TFPrincipal
         Width = 250
       end
       item
+        Text = 'Vers'#227'o 1.1'
         Width = 50
       end>
   end
