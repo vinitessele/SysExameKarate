@@ -88,12 +88,16 @@ inherited FTecnicas: TFTecnicas
   object ComboBox1: TComboBox
     Left = 423
     Top = 120
-    Width = 194
+    Width = 145
     Height = 21
+    ItemIndex = 0
     TabOrder = 5
     Text = 'Kata'
-    OnChange = ComboBox1Change
-    OnExit = ComboBox1Exit
+    Items.Strings = (
+      'Kata'
+      'Kihon'
+      'Kumite'
+      'Outros requisitos')
   end
   object DataSource1: TDataSource
     DataSet = DM.FDQTecnica
@@ -111,14 +115,37 @@ inherited FTecnicas: TFTecnicas
     OutputConverters = <>
     Left = 20
     Top = 5
-    object LinkListControlToField1: TLinkListControlToField
+    object LinkFillControlToField: TLinkFillControlToField
       Category = 'Quick Bindings'
-      DataSource = BindSourceDB1
-      FieldName = 'grupo_descricao'
-      Control = ComboBox1
+      FieldName = 'Grupo'
+      Track = False
+      FillDataSource = BindSourceDB1
+      FillValueFieldName = 'grupo_id'
+      FillDisplayFieldName = 'grupo_descricao'
+      AutoFill = True
       FillExpressions = <>
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
+    object LinkFillControlToField1: TLinkFillControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      FieldName = 'Grupo'
+      Control = ComboBox1
+      Track = True
+      FillDataSource = BindSourceDB1
+      FillValueFieldName = 'grupo_descricao'
+      FillDisplayFieldName = 'grupo_descricao'
+      AutoFill = True
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = DM.FDQTecnica
+    ScopeMappings = <>
+    Left = 376
+    Top = 248
   end
 end

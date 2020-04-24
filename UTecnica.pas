@@ -18,11 +18,13 @@ type
     Label2: TLabel;
     DBEdit2: TDBEdit;
     DBGrid1: TDBGrid;
-    ComboBox1: TComboBox;
     Label3: TLabel;
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
-    LinkListControlToField1: TLinkListControlToField;
+    LinkFillControlToField: TLinkFillControlToField;
+    ComboBox1: TComboBox;
+    LinkFillControlToField1: TLinkFillControlToField;
+    BindSourceDB2: TBindSourceDB;
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox1Exit(Sender: TObject);
   private

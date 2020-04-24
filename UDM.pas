@@ -154,6 +154,15 @@ type
     FDQListTecnicasAlunoMediasGrupo: TStringField;
     FDQListaAlunoExameacademia_nome: TStringField;
     FDQListaAlunoExameacademia_logo: TBlobField;
+    FDQListTecnicaFisico: TFDQuery;
+    FDQListTecnicaTeoria: TFDQuery;
+    FDQListTecnicaTeoriatecnica_id: TFDAutoIncField;
+    FDQListTecnicaTeoriatecnica_descricao: TStringField;
+    FDQListTecnicaTeoriaGrupo: TStringField;
+    FDQListTecnicaFisicotecnica_id: TFDAutoIncField;
+    FDQListTecnicaFisicotecnica_descricao: TStringField;
+    FDQListTecnicaFisicoGrupo: TStringField;
+    FDQfaixatecnicatecnica_descricao: TStringField;
     procedure FDQTecnicaBeforeInsert(DataSet: TDataSet);
     procedure FDQTecnicaBeforeEdit(DataSet: TDataSet);
     procedure FDQTecnicaAfterInsert(DataSet: TDataSet);

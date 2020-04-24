@@ -38,7 +38,7 @@ Coordinates=73,78,46,51
 Coordinates=391,10,46,51
 
 [DataSource1]
-Coordinates=1250,150,90,195
+Coordinates=1250,150,90,213
 Visible=True
 
 [Label3]
@@ -125,13 +125,13 @@ Coordinates=1070,370,84,105
 Visible=True
 
 [BindSourceDB1]
-Coordinates=1200,370,92,123
+Coordinates=1220,390,92,123
 
 [BindingsList1]
 Coordinates=475,1,82,33
 
 [BindSourceDB2]
-Coordinates=900,300,92,213
+Coordinates=900,300,92,231
 
 [OpenPictureDialog1]
 Coordinates=475,53,112,33
@@ -141,4 +141,16 @@ Coordinates=471,105,64,33
 
 [btnFoto]
 Coordinates=319,80,52,51
+
+[DM.FDQListTecnicaTeoria]
+Coordinates=517,143,142,105
+
+[DM.FDQListaAlunoExame]
+Coordinates=331,588,141,339
+
+[DM.FDQListTecnicaFisico]
+Coordinates=338,1,141,105
+
+[DM.FDQListTecnicasAlunoMedias]
+Coordinates=138,80,181,87
 

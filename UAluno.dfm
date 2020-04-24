@@ -182,6 +182,7 @@ inherited FAluno: TFAluno
     Top = 291
     Width = 145
     Height = 21
+    ItemIndex = 0
     TabOrder = 9
     Text = 'Dojo Tessele'
     Items.Strings = (

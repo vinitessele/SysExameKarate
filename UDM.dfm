@@ -1,7 +1,7 @@
 object DM: TDM
   OldCreateOrder = False
   Height = 563
-  Width = 616
+  Width = 831
   object FDConnection1: TFDConnection
     Params.Strings = (
       
@@ -261,7 +261,8 @@ object DM: TDM
     Active = True
     Connection = FDConnection1
     SQL.Strings = (
-      'select * from faixatecnica')
+      'select * from faixatecnica f'
+      'inner join tecnica t on t.tecnica_id - f.tecnica_id')
     Left = 112
     Top = 200
     object FDQfaixatecnicafaixatecnica_id: TFDAutoIncField
@@ -277,6 +278,14 @@ object DM: TDM
     object FDQfaixatecnicatecnica_id: TIntegerField
       FieldName = 'tecnica_id'
       Origin = 'tecnica_id'
+    end
+    object FDQfaixatecnicatecnica_descricao: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tecnica_descricao'
+      Origin = 'tecnica_descricao'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
     end
   end
   object FDQListTecnicaKata: TFDQuery
@@ -700,10 +709,9 @@ object DM: TDM
       'inner join tecnica t on t.tecnica_id=ex.exametecnicatecnica_id'
       'where a.aluno_id = :aluno'
       'and   t.grupo = :grupo'
-      'and   e.exame_data = :data'
       'order by t.tecnica_id')
-    Left = 304
-    Top = 128
+    Left = 312
+    Top = 136
     ParamData = <
       item
         Name = 'ALUNO'
@@ -714,12 +722,6 @@ object DM: TDM
       item
         Name = 'GRUPO'
         DataType = ftString
-        ParamType = ptInput
-        Value = Null
-      end
-      item
-        Name = 'DATA'
-        DataType = ftDate
         ParamType = ptInput
         Value = Null
       end>
@@ -1074,6 +1076,76 @@ object DM: TDM
       Size = 32767
     end
     object FDQListTecnicasAlunoMediasGrupo: TStringField
+      FieldName = 'Grupo'
+      Origin = 'Grupo'
+      Size = 30
+    end
+  end
+  object FDQListTecnicaFisico: TFDQuery
+    Active = True
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM tecnica t'
+      
+        'WHERE t.tecnica_id NOT IN (SELECT ft.tecnica_id FROM faixatecnic' +
+        'a ft where ft.faixa_id =:faixa )'
+      'and t.grupo = '#39'F'#237'sico'#39)
+    Left = 528
+    Top = 320
+    ParamData = <
+      item
+        Name = 'FAIXA'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object FDQListTecnicaFisicotecnica_id: TFDAutoIncField
+      FieldName = 'tecnica_id'
+      Origin = 'tecnica_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object FDQListTecnicaFisicotecnica_descricao: TStringField
+      FieldName = 'tecnica_descricao'
+      Origin = 'tecnica_descricao'
+      Size = 50
+    end
+    object FDQListTecnicaFisicoGrupo: TStringField
+      FieldName = 'Grupo'
+      Origin = 'Grupo'
+      Size = 30
+    end
+  end
+  object FDQListTecnicaTeoria: TFDQuery
+    Active = True
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM tecnica t'
+      
+        'WHERE t.tecnica_id NOT IN (SELECT ft.tecnica_id FROM faixatecnic' +
+        'a ft where ft.faixa_id =:faixa )'
+      'and t.grupo = '#39'Teoria'#39)
+    Left = 624
+    Top = 320
+    ParamData = <
+      item
+        Name = 'FAIXA'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object FDQListTecnicaTeoriatecnica_id: TFDAutoIncField
+      FieldName = 'tecnica_id'
+      Origin = 'tecnica_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object FDQListTecnicaTeoriatecnica_descricao: TStringField
+      FieldName = 'tecnica_descricao'
+      Origin = 'tecnica_descricao'
+      Size = 50
+    end
+    object FDQListTecnicaTeoriaGrupo: TStringField
       FieldName = 'Grupo'
       Origin = 'Grupo'
       Size = 30

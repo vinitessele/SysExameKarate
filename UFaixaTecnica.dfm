@@ -20,7 +20,7 @@ inherited FFaixaTecnica: TFFaixaTecnica
     Caption = 'Lista de T'#233'cnicas Kihon'
   end
   object Label3: TLabel [2]
-    Left = 460
+    Left = 631
     Top = 109
     Width = 101
     Height = 13
@@ -34,7 +34,7 @@ inherited FFaixaTecnica: TFFaixaTecnica
     Caption = '^2 Clique para Adicionar'
   end
   object Label5: TLabel [4]
-    Left = 416
+    Left = 587
     Top = 439
     Width = 117
     Height = 13
@@ -83,7 +83,7 @@ inherited FFaixaTecnica: TFFaixaTecnica
     Caption = '^2 Clique para Adicionar'
   end
   object Image2: TImage [11]
-    Left = 416
+    Left = 587
     Top = 84
     Width = 38
     Height = 38
@@ -127,6 +127,34 @@ inherited FFaixaTecnica: TFFaixaTecnica
       8408C3FD5F94F92596ADC538977F00510D5188634A4DE00000000049454E44AE
       426082}
   end
+  object Label12: TLabel [12]
+    Left = 376
+    Top = 109
+    Width = 105
+    Height = 13
+    Caption = 'Lista de T'#233'cnica F'#237'sico'
+  end
+  object Label13: TLabel [13]
+    Left = 376
+    Top = 263
+    Width = 118
+    Height = 13
+    Caption = '^2 Clique para Adicionar'
+  end
+  object Label14: TLabel [14]
+    Left = 376
+    Top = 285
+    Width = 55
+    Height = 13
+    Caption = 'Lista Teoria'
+  end
+  object Label15: TLabel [15]
+    Left = 376
+    Top = 439
+    Width = 118
+    Height = 13
+    Caption = '^2 Clique para Adicionar'
+  end
   inherited PanelTooBar: TPanel
     Visible = False
     inherited DBNavigator1: TDBNavigator
@@ -159,7 +187,7 @@ inherited FFaixaTecnica: TFFaixaTecnica
     Height = 129
     Columns = <>
     Items.ItemData = {
-      05400200000A00000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF010000
+      05780200000B00000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF010000
       000E430048005500440041004E0020004F00490020005A0055004B0049000000
       0000FFFFFFFFFFFFFFFF00000000FFFFFFFF020000000B530041004E0042004F
       004E002000530055004B00490000000000FFFFFFFFFFFFFFFF00000000FFFFFF
@@ -176,13 +204,15 @@ inherited FFaixaTecnica: TFFaixaTecnica
       004E0020005500430048004900200055004B00450000000000FFFFFFFFFFFFFF
       FF00000000FFFFFFFF090000000F430048005500440041004E00200053004F00
       54004F00200055004B00450000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF
-      0A0000000D4A004F00440041004E002000410047004500200055004B004500}
+      0A0000000D4A004F00440041004E002000410047004500200055004B00450000
+      000000FFFFFFFFFFFFFFFF00000000FFFFFFFF0B0000000F4D00410045002000
+      47004500520049002000430048005500440041004E00}
     TabOrder = 3
     ViewStyle = vsList
     OnDblClick = ListViewTecnicasDblClick
   end
   object ListViewTecnicasExame: TListView
-    Left = 416
+    Left = 587
     Top = 128
     Width = 169
     Height = 305
@@ -256,12 +286,47 @@ inherited FFaixaTecnica: TFFaixaTecnica
     Height = 129
     Columns = <>
     Items.ItemData = {
-      054C0000000200000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF010000
-      00064600CD005300490043004F0000000000FFFFFFFFFFFFFFFF00000000FFFF
-      FFFF0200000006540045004F00520049004100}
+      05F40000000500000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF010000
+      0008500052004500530045004E00C700410000000000FFFFFFFFFFFFFFFF0000
+      0000FFFFFFFF020000000A46004900440045004C004900440041004400450000
+      000000FFFFFFFFFFFFFFFF00000000FFFFFFFF0300000008430041005200CA00
+      4E0043004900410000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF04000000
+      09440049004300490050004C0049004E00410000000000FFFFFFFFFFFFFFFF00
+      000000FFFFFFFF05000000164100530053004900440055004900440041004400
+      4500200043004F004E005300450043005400490056004100}
     TabOrder = 7
     ViewStyle = vsList
     OnDblClick = ListViewTecnicasOutrosDblClick
+  end
+  object ListViewFisico: TListView
+    Left = 376
+    Top = 128
+    Width = 161
+    Height = 129
+    Columns = <>
+    Items.ItemData = {
+      05940000000300000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF010000
+      000F46006C0065007800E3006F002000640065002000620072006100E7006F00
+      00000000FFFFFFFFFFFFFFFF00000000FFFFFFFF02000000094100620064006F
+      006D0069006E0061006C0000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF03
+      0000000B41006C006F006E00670061006D0065006E0074006F00}
+    TabOrder = 8
+    ViewStyle = vsList
+    OnDblClick = ListViewFisicoDblClick
+  end
+  object ListViewTeoria: TListView
+    Left = 376
+    Top = 304
+    Width = 161
+    Height = 129
+    Columns = <>
+    Items.ItemData = {
+      05500000000200000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF010000
+      0009500065007200670075006E0074006100730000000000FFFFFFFFFFFFFFFF
+      00000000FFFFFFFF020000000554006500780074006F00}
+    TabOrder = 9
+    ViewStyle = vsList
+    OnDblClick = ListViewTeoriaDblClick
   end
   object BindSourceDB1: TBindSourceDB
     DataSet = DM.FDQFaixa
@@ -292,15 +357,6 @@ inherited FFaixaTecnica: TFFaixaTecnica
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
-    object LinkListControlToField3: TLinkListControlToField
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB3
-      FieldName = 'tecnica_descricao'
-      Control = ListViewTecnicasExame
-      FillExpressions = <>
-      FillHeaderExpressions = <>
-      FillBreakGroups = <>
-    end
     object LinkListControlToField4: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB4
@@ -324,6 +380,33 @@ inherited FFaixaTecnica: TFFaixaTecnica
       DataSource = BindSourceDB6
       FieldName = 'tecnica_descricao'
       Control = ListViewTecnicasOutros
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkListControlToField7: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB7
+      FieldName = 'tecnica_descricao'
+      Control = ListViewTeoria
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkListControlToField8: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB8
+      FieldName = 'tecnica_descricao'
+      Control = ListViewFisico
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkListControlToField3: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB3
+      FieldName = 'tecnica_descricao'
+      Control = ListViewTecnicasExame
       FillExpressions = <>
       FillHeaderExpressions = <>
       FillBreakGroups = <>
@@ -358,5 +441,17 @@ inherited FFaixaTecnica: TFFaixaTecnica
     ScopeMappings = <>
     Left = 280
     Top = 8
+  end
+  object BindSourceDB7: TBindSourceDB
+    DataSet = DM.FDQListTecnicaTeoria
+    ScopeMappings = <>
+    Left = 376
+    Top = 256
+  end
+  object BindSourceDB8: TBindSourceDB
+    DataSet = DM.FDQListTecnicaFisico
+    ScopeMappings = <>
+    Left = 384
+    Top = 264
   end
 end

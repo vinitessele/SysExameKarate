@@ -149,7 +149,7 @@ begin
         Word.bold(false); // tira o negrito
         Word.FontSize(12);
         Word.Insert(#32#32 + dm.FDQListTecnicasAlunoMediasGrupo.AsString);
-        Word.Insert(#32#32 + dm.FDQListTecnicasAlunoMediasmedia.AsString);
+        Word.Insert(#32#32 + formatfloat('#0.00', dm.FDQListTecnicasAlunoMediasmedia.AsFloat));
         dm.FDQGrupo.Next;
       end;
 
@@ -200,7 +200,7 @@ begin
 
           Word.centerPara;
           Word.Insert(dm.FDQListTecnicasAlunoNotasGrupo.AsString + #32 + 'Média'
-            + #32 + dm.FDQListTecnicasAlunoMediasmedia.AsString);
+            + #32 + formatfloat('#0.00', dm.FDQListTecnicasAlunoMediasmedia.AsFloat));
           Word.NextCell;
           Word.NextCell;
           grupo := dm.FDQListTecnicasAlunoNotasGrupo.AsString;

@@ -63,7 +63,7 @@ begin
   dm.FDQExameNota.Close;
   dm.FDQExameNota.ParamByName('aluno').AsInteger :=
     dm.FDQExamealuno_id.AsInteger;
-  dm.FDQExameNota.ParamByName('data').AsDate := Date;
+//  dm.FDQExameNota.ParamByName('data').AsDate := Date;
   dm.FDQExameNota.ParamByName('grupo').AsString :=
     dm.FDQGrupogrupo_descricao.AsString;
   dm.FDQExameNota.Open();
