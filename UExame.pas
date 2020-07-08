@@ -51,7 +51,7 @@ implementation
 
 {$R *.dfm}
 
-uses UPesquisa, UDM;
+uses UPesquisa, UDM, UListExames;
 
 procedure TFCadExame.btnAlterarClick(Sender: TObject);
 begin
@@ -94,7 +94,6 @@ begin
   end
   else
   begin
-
     dm.FDQListTecnicaFaixa.Active := True;
     dm.FDQListTecnicaFaixa.Close;
     dm.FDQListTecnicaFaixa.ParamByName('faixa').AsInteger :=
@@ -123,13 +122,14 @@ begin
       dm.FDConnection1.CommitRetaining;
       dm.FDQListTecnicaFaixa.Next;
     end;
+    dm.FDQListTecnicasAlunoNotas.Active := True;
+    dm.FDQListTecnicasAlunoNotas.Close;
+    dm.FDQListTecnicasAlunoNotas.ParamByName('exame').AsInteger :=
+      dm.FDQExameAlunoexame_id.AsInteger;
+    dm.FDQListTecnicasAlunoNotas.Open();
+
   end;
-  EditDataAlteracao.Text := dm.FDQValidaAlunoExameexame_data.AsString;
-  dm.FDQListTecnicasAlunoNotas.Active := True;
-  dm.FDQListTecnicasAlunoNotas.Close;
-  dm.FDQListTecnicasAlunoNotas.ParamByName('exame').AsInteger :=
-    dm.FDQValidaAlunoExameexame_id.AsInteger;
-  dm.FDQListTecnicasAlunoNotas.Open();
+
 end;
 
 procedure TFCadExame.btnpesquisaClick(Sender: TObject);
@@ -154,6 +154,7 @@ procedure TFCadExame.FormShow(Sender: TObject);
 begin
   inherited;
   EditData.Text := DateToStr(Date);
+  FListaExames.ShowModal;
 end;
 
 end.

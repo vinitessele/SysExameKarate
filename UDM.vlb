@@ -11,10 +11,10 @@ Coordinates=229,159,90,33
 Coordinates=120,179,107,33
 
 [FDQListTecnicaDescricao]
-Coordinates=10,179,141,87
+Coordinates=97,582,141,87
 
 [FDQAluno]
-Coordinates=139,10,90,159
+Coordinates=368,10,90,213
 
 [FDQAlunoaluno_observacao]
 Coordinates=389,53,155,33
@@ -23,7 +23,7 @@ Coordinates=389,53,155,33
 Coordinates=389,105,125,33
 
 [FDQTecnica]
-Coordinates=161,179,88,105
+Coordinates=478,413,88,105
 
 [FDQAlunoaluno_email]
 Coordinates=389,157,124,33
@@ -41,7 +41,7 @@ Coordinates=370,250,124,33
 Coordinates=251,250,111,33
 
 [FDQGrupo]
-Coordinates=259,179,82,87
+Coordinates=248,582,82,87
 
 [FDQAlunoaluno_cpf]
 Coordinates=132,250,113,33
@@ -53,7 +53,7 @@ Coordinates=639,53,163,33
 Coordinates=639,105,192,33
 
 [FDQFaixa]
-Coordinates=446,10,77,87
+Coordinates=10,582,77,87
 
 [FDQFaixafaixa_id]
 Coordinates=229,211,100,33
@@ -65,13 +65,13 @@ Coordinates=869,1,168,33
 Coordinates=639,313,133,33
 
 [FDQfaixatecnica]
-Coordinates=239,10,95,105
+Coordinates=127,413,95,123
 
 [FDQfaixatecnicatecnica_id]
 Coordinates=639,365,145,33
 
 [FDQListTecnicaFaixa]
-Coordinates=10,10,119,159
+Coordinates=634,10,119,159
 
 [FDQListTecnicaFaixaGrupo]
 Coordinates=639,417,149,33
@@ -94,56 +94,17 @@ Coordinates=639,469,139,33
 [FDQListTecnicaFaixafaixa_id]
 Coordinates=480,499,157,33
 
-[FDQListTecnicaKihon]
-Coordinates=344,10,121,105
-
 []
-Coordinates=1432,781,154,33
-
-[FDQListTecnicaKihontecnica_descricao]
-Coordinates=639,157,211,33
-
-[FDQListTecnicaKihontecnica_id]
-Coordinates=639,209,172,33
-
-[FDQListTecnicaOutros]
 Coordinates=400,302,126,105
-
-[FDQListTecnicaKata]
-Coordinates=172,321,115,105
-
-[FDQListTecnicaKatatecnica_id]
-Coordinates=639,261,165,33
-
-[FDQListTecnicaKihonGrupo]
-Coordinates=888,209,152,33
 
 [FDQAlunoByNomealuno_nome]
 Coordinates=888,261,167,33
 
-[FDQListTecnicaKumite]
-Coordinates=43,321,127,105
-
-[FDQListTecnicaOutrostecnica_id]
-Coordinates=888,313,176,33
-
 [FDQAlunoByNome]
-Coordinates=291,321,107,159
-
-[FDQListTecnicaKataGrupo]
-Coordinates=888,365,145,33
-
-[FDQListTecnicaKumitetecnica_descricao]
-Coordinates=888,417,216,33
-
-[FDQListTecnicaKatatecnica_descricao]
-Coordinates=888,469,204,33
+Coordinates=10,413,107,159
 
 [FDQAlunoByNomealuno_celular]
 Coordinates=869,518,173,33
-
-[FDQListTecnicaOutrosGrupo]
-Coordinates=710,518,157,33
 
 [FDQAlunoByNomealuno_observacao]
 Coordinates=281,518,197,33
@@ -151,17 +112,8 @@ Coordinates=281,518,197,33
 [FDQAlunoByNomealuno_email]
 Coordinates=112,518,166,33
 
-[FDQListTecnicaKumitetecnica_id]
-Coordinates=1142,1,178,33
-
 [FDQAlunoByNomealuno_id]
 Coordinates=1142,53,149,33
-
-[FDQListTecnicaKumiteGrupo]
-Coordinates=1142,105,158,33
-
-[FDQListTecnicaOutrostecnica_descricao]
-Coordinates=1142,157,215,33
 
 [FDQAlunoByNomealuno_cpf]
 Coordinates=1142,209,155,33
@@ -170,7 +122,7 @@ Coordinates=1142,209,155,33
 Coordinates=639,570,233,33
 
 [FDQListTecnicasAlunoNotas]
-Coordinates=295,426,156,213
+Coordinates=468,10,156,213
 
 [FDQExamealuno_observacao]
 Coordinates=620,619,159,33
@@ -206,7 +158,7 @@ Coordinates=891,816,151,33
 Coordinates=742,816,145,33
 
 [FDQExameAlunoTecnica]
-Coordinates=57,619,136,159
+Coordinates=763,10,136,159
 
 [FDQListTecnicasAlunoNotasexame_id]
 Coordinates=533,816,203,33
@@ -218,7 +170,7 @@ Coordinates=344,816,188,33
 Coordinates=165,816,175,33
 
 [FDQExameAluno]
-Coordinates=196,619,98,123
+Coordinates=370,413,98,123
 
 [FDQExameNotatecnica_descricao]
 Coordinates=1167,261,181,33
@@ -230,7 +182,7 @@ Coordinates=1142,313,252,33
 Coordinates=1167,365,172,33
 
 [FDQExameNota]
-Coordinates=129,188,116,393
+Coordinates=10,10,116,393
 
 [FDQValidaAlunoExameexamefaixa_id]
 Coordinates=1167,417,199,33
@@ -254,7 +206,7 @@ Coordinates=1167,573,196,33
 Coordinates=925,868,135,33
 
 [FDQValidaAlunoExame]
-Coordinates=148,1,128,123
+Coordinates=232,413,128,123
 
 [FDQExameAlunoexamefaixa_id]
 Coordinates=1167,625,168,33
@@ -314,13 +266,13 @@ Coordinates=1432,261,139,33
 Coordinates=1655,157,274,33
 
 [FDQMediaExame]
-Coordinates=372,157,98,69
+Coordinates=340,582,98,69
 
 [FDQExameNotaaluno_id]
 Coordinates=1167,937,134,33
 
 [FDQExame]
-Coordinates=30,285,90,231
+Coordinates=268,10,90,231
 
 [FDQExameexame_data]
 Coordinates=1038,958,128,33
@@ -356,5 +308,89 @@ Coordinates=1432,677,164,33
 Coordinates=1432,729,159,33
 
 [FDQAcademia]
-Coordinates=747,958,84,105
+Coordinates=678,413,84,105
+
+[FDQListTecnica]
+Coordinates=576,413,92,105
+
+[FDQListTecnicatecnica_id]
+Coordinates=639,209,143,33
+
+[FDQListTecnicatecnica_descricao]
+Coordinates=639,157,182,33
+
+[FDQListTecnicaGrupo]
+Coordinates=888,209,123,33
+
+[FDQListTecnicasAlunoMediasGrupo]
+Coordinates=639,261,193,33
+
+[FDQAlunoaluno_img]
+Coordinates=675,521,116,33
+
+[FDQListaAlunoExameexamealuno_id]
+Coordinates=910,313,196,33
+
+[FDQListaAlunoExamealunoacademia_id]
+Coordinates=910,365,211,33
+
+[FDQListaAlunoExamefaixa_descricao]
+Coordinates=910,417,199,33
+
+[FDQListaAlunoExame]
+Coordinates=136,10,122,339
+
+[FDQListaAlunoExamealuno_id]
+Coordinates=910,469,164,33
+
+[FDQListTecnicasAlunoMediasmedia]
+Coordinates=1167,1,192,33
+
+[FDQListaAlunoExamealuno_img]
+Coordinates=1167,105,174,33
+
+[FDQListaAlunoExameexame_id]
+Coordinates=1167,157,169,33
+
+[FDQListaAlunoExameexame_data]
+Coordinates=1167,989,181,33
+
+[FDQListaAlunoExameexamefaixa_id]
+Coordinates=1148,1035,192,33
+
+[FDQAlunoAcademia]
+Coordinates=925,920,113,33
+
+[FDQfaixatecnicatecnica_descricao]
+Coordinates=959,1035,184,33
+
+[FDQAlunoalunoacademia_id]
+Coordinates=588,1035,154,33
+
+[FDQListTecnicasAlunoMedias]
+Coordinates=772,413,162,87
+
+[FDQListaAlunoExamealuno_email]
+Coordinates=399,1035,182,33
+
+[FDQListaAlunoExamealuno_celular]
+Coordinates=210,1035,188,33
+
+[FDQListaAlunoExameacademia_nome]
+Coordinates=0,1002,202,33
+
+[FDQListaAlunoExamealuno_nome]
+Coordinates=1432,781,183,33
+
+[FDQListaAlunoExamefaixa_id]
+Coordinates=1432,833,160,33
+
+[FDQListaAlunoExameacademia_logo]
+Coordinates=1432,885,196,33
+
+[FDQListaAlunoExamealuno_observacao]
+Coordinates=1398,937,212,33
+
+[FDQListaAlunoExamealuno_cpf]
+Coordinates=1432,989,171,33
 

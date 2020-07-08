@@ -1,8 +1,10 @@
 inherited FFaixaTecnica: TFFaixaTecnica
   Caption = 'Associa'#231#227'o Faixa com t'#233'cnicas'
-  ClientHeight = 499
+  ClientHeight = 557
+  ClientWidth = 800
   OnShow = FormShow
-  ExplicitHeight = 538
+  ExplicitWidth = 816
+  ExplicitHeight = 596
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel [0]
@@ -12,79 +14,9 @@ inherited FFaixaTecnica: TFFaixaTecnica
     Height = 13
     Caption = 'Faixas'
   end
-  object Label2: TLabel [1]
-    Left = 8
-    Top = 109
-    Width = 110
-    Height = 13
-    Caption = 'Lista de T'#233'cnicas Kihon'
-  end
-  object Label3: TLabel [2]
-    Left = 631
-    Top = 109
-    Width = 101
-    Height = 13
-    Caption = 'T'#233'cnicas para exame'
-  end
-  object Label4: TLabel [3]
-    Left = 8
-    Top = 263
-    Width = 118
-    Height = 13
-    Caption = '^2 Clique para Adicionar'
-  end
-  object Label5: TLabel [4]
-    Left = 587
-    Top = 439
-    Width = 117
-    Height = 13
-    Caption = '^2 Clique para Remover'
-  end
-  object Label6: TLabel [5]
-    Left = 8
-    Top = 285
-    Width = 106
-    Height = 13
-    Caption = 'Lista de T'#233'cnicas Kata'
-  end
-  object Label7: TLabel [6]
-    Left = 8
-    Top = 439
-    Width = 118
-    Height = 13
-    Caption = '^2 Clique para Adicionar'
-  end
-  object Label8: TLabel [7]
-    Left = 192
-    Top = 109
-    Width = 116
-    Height = 13
-    Caption = 'Lista de T'#233'cnicas Kumite'
-  end
-  object Label9: TLabel [8]
-    Left = 192
-    Top = 263
-    Width = 118
-    Height = 13
-    Caption = '^2 Clique para Adicionar'
-  end
-  object Label10: TLabel [9]
-    Left = 192
-    Top = 285
-    Width = 166
-    Height = 13
-    Caption = 'Lista de T'#233'cnicas Outros requisitos'
-  end
-  object Label11: TLabel [10]
-    Left = 192
-    Top = 439
-    Width = 118
-    Height = 13
-    Caption = '^2 Clique para Adicionar'
-  end
-  object Image2: TImage [11]
-    Left = 587
-    Top = 84
+  object Image2: TImage [1]
+    Left = 560
+    Top = 63
     Width = 38
     Height = 38
     Picture.Data = {
@@ -127,212 +59,136 @@ inherited FFaixaTecnica: TFFaixaTecnica
       8408C3FD5F94F92596ADC538977F00510D5188634A4DE00000000049454E44AE
       426082}
   end
-  object Label12: TLabel [12]
-    Left = 376
-    Top = 109
-    Width = 105
-    Height = 13
-    Caption = 'Lista de T'#233'cnica F'#237'sico'
-  end
-  object Label13: TLabel [13]
-    Left = 376
-    Top = 263
-    Width = 118
-    Height = 13
-    Caption = '^2 Clique para Adicionar'
-  end
-  object Label14: TLabel [14]
-    Left = 376
-    Top = 285
-    Width = 55
-    Height = 13
-    Caption = 'Lista Teoria'
-  end
-  object Label15: TLabel [15]
-    Left = 376
-    Top = 439
-    Width = 118
-    Height = 13
-    Caption = '^2 Clique para Adicionar'
-  end
   inherited PanelTooBar: TPanel
+    Width = 800
     Visible = False
+    ExplicitWidth = 800
     inherited DBNavigator1: TDBNavigator
       Visible = False
     end
   end
   inherited StatusBar1: TStatusBar
-    Top = 480
-    ExplicitTop = 480
+    Top = 538
+    Width = 800
+    ExplicitTop = 538
+    ExplicitWidth = 800
   end
   object ComboBox1: TComboBox
     Left = 8
     Top = 80
-    Width = 257
+    Width = 529
     Height = 21
-    ItemIndex = 0
     TabOrder = 2
-    Text = 'Branca-Cinza'
     OnChange = ComboBox1Change
-    Items.Strings = (
-      'Branca-Cinza'
-      'Cinza-Azul'
-      'Azul-Amarela'
-      'Amarela-Vermelha')
   end
-  object ListViewTecnicas: TListView
+  object GroupBox1: TGroupBox
     Left = 8
-    Top = 128
-    Width = 161
-    Height = 129
-    Columns = <>
-    Items.ItemData = {
-      05780200000B00000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF010000
-      000E430048005500440041004E0020004F00490020005A0055004B0049000000
-      0000FFFFFFFFFFFFFFFF00000000FFFFFFFF020000000B530041004E0042004F
-      004E002000530055004B00490000000000FFFFFFFFFFFFFFFF00000000FFFFFF
-      FF0300000011430048005500440041004E0020004700590041004B0055002000
-      5A0055004B00490000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF04000000
-      1647004500440041004E0020004200410052004100490020004700590041004B
-      00550020005A0055004B00490000000000FFFFFFFFFFFFFFFF00000000FFFFFF
-      FF050000001A430048005500440041004E002000550043004800490020005500
-      4B00450020004700590041004B00550020005A0055004B00490000000000FFFF
-      FFFFFFFFFFFF00000000FFFFFFFF060000000E430048005500440041004E0020
-      004F00490020005A0055004B00490000000000FFFFFFFFFFFFFFFF00000000FF
-      FFFFFF070000000B47004500440041004E002000420041005200410049000000
-      0000FFFFFFFFFFFFFFFF00000000FFFFFFFF080000000F430048005500440041
-      004E0020005500430048004900200055004B00450000000000FFFFFFFFFFFFFF
-      FF00000000FFFFFFFF090000000F430048005500440041004E00200053004F00
-      54004F00200055004B00450000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF
-      0A0000000D4A004F00440041004E002000410047004500200055004B00450000
-      000000FFFFFFFFFFFFFFFF00000000FFFFFFFF0B0000000F4D00410045002000
-      47004500520049002000430048005500440041004E00}
+    Top = 107
+    Width = 753
+    Height = 182
+    Caption = 'Grupo de t'#233'cnicas dispon'#237'veis '
     TabOrder = 3
-    ViewStyle = vsList
-    OnDblClick = ListViewTecnicasDblClick
+    object Label2: TLabel
+      Left = 3
+      Top = 159
+      Width = 120
+      Height = 13
+      Caption = '^2 cliques para adicionar'
+    end
+    object DBGrid1: TDBGrid
+      Left = 3
+      Top = 24
+      Width = 747
+      Height = 129
+      DataSource = DataSource1
+      Options = [dgTitles, dgIndicator, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      TabOrder = 0
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
+      OnDblClick = DBGrid1DblClick
+      Columns = <
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'tecnica_id'
+          Title.Alignment = taCenter
+          Title.Caption = 'ID'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'tecnica_descricao'
+          Title.Alignment = taCenter
+          Title.Caption = 'T'#233'cnica'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Grupo'
+          Title.Alignment = taCenter
+          Visible = True
+        end>
+    end
   end
-  object ListViewTecnicasExame: TListView
-    Left = 587
-    Top = 128
-    Width = 169
-    Height = 305
-    Columns = <>
-    ColumnClick = False
-    TabOrder = 4
-    ViewStyle = vsList
-    OnDblClick = ListViewTecnicasExameDblClick
-  end
-  object ListViewTecnicasKata: TListView
+  object GroupBox2: TGroupBox
     Left = 8
-    Top = 304
-    Width = 161
-    Height = 129
-    Columns = <>
-    Items.ItemData = {
-      05700300001400000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF010000
-      000C48004500490041004E002000530048004F00440041004E0000000000FFFF
-      FFFFFFFFFFFF00000000FFFFFFFF020000000B48004500490041004E0020004E
-      004900440041004E0000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF030000
-      000C48004500490041004E002000530041004E00440041004E0000000000FFFF
-      FFFFFFFFFFFF00000000FFFFFFFF040000000B48004500490041004E00200059
-      004F00440041004E0000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF050000
-      000B48004500490041004E00200047004F00440041004E0000000000FFFFFFFF
-      FFFFFFFF00000000FFFFFFFF060000000C540045004B004B0049002000530048
-      004F00440041004E0000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF070000
-      000B540045004B004B00490020004E004900440041004E0000000000FFFFFFFF
-      FFFFFFFF00000000FFFFFFFF080000000C540045004B004B0049002000530041
-      004E00440041004E0000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF090000
-      000A420041005300530041004900200044004100490000000000FFFFFFFFFFFF
-      FFFF00000000FFFFFFFF0A000000044A004F0049004E0000000000FFFFFFFFFF
-      FFFFFF00000000FFFFFFFF0B000000094B0041004E004B005500200044004100
-      490000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF0C0000000445004E0050
-      00490000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF0D000000054A004900
-      54005400450000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF0E0000000848
-      0041004E004700450054005300550000000000FFFFFFFFFFFFFFFF00000000FF
-      FFFFFF0F00000007470041004E004B0041004B00550000000000FFFFFFFFFFFF
-      FFFF00000000FFFFFFFF10000000094B0041004E004B0055002000530048004F
-      0000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF11000000094E0049004A00
-      550053004800490048004F0000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF
-      120000000D47004F004A00550053004800490052004F002000530048004F0000
-      000000FFFFFFFFFFFFFFFF00000000FFFFFFFF130000000455004E0053005500
-      00000000FFFFFFFFFFFFFFFF00000000FFFFFFFF140000000653004F00430048
-      0049004E00}
-    TabOrder = 5
-    ViewStyle = vsList
-    OnDblClick = ListViewTecnicasKataDblClick
+    Top = 295
+    Width = 753
+    Height = 242
+    Caption = 'T'#233'cnicas Adicionadas no exame'
+    TabOrder = 4
+    object Label3: TLabel
+      Left = 3
+      Top = 224
+      Width = 120
+      Height = 13
+      Caption = '^2 cliques para Remover'
+    end
+    object DBGrid2: TDBGrid
+      Left = 3
+      Top = 25
+      Width = 747
+      Height = 193
+      DataSource = DataSource2
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      TabOrder = 0
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
+      OnDblClick = DBGrid2DblClick
+      Columns = <
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'tecnica_id'
+          Title.Alignment = taCenter
+          Title.Caption = 'ID'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'tecnica_descricao'
+          Title.Alignment = taCenter
+          Title.Caption = 'Descri'#231#227'o'
+          Visible = True
+        end>
+    end
   end
-  object ListViewTecnicasKumite: TListView
-    Left = 192
-    Top = 128
-    Width = 161
-    Height = 129
-    Columns = <>
-    Items.ItemData = {
-      05D20000000400000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF010000
-      000C4900500050004F004E0020004B0055004D0049005400CA0000000000FFFF
-      FFFFFFFFFFFF00000000FFFFFFFF02000000114A004900590055002000490050
-      0050004F004E0020004B0055004D0049005400CA0000000000FFFFFFFFFFFFFF
-      FF00000000FFFFFFFF030000000C5300480049004100490020004B0055004D00
-      49005400CA0000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF040000000C47
-      004F0048004F004E0020004B0055004D00490054004500}
-    TabOrder = 6
-    ViewStyle = vsList
-    OnDblClick = ListViewTecnicasKumiteDblClick
-  end
-  object ListViewTecnicasOutros: TListView
-    Left = 192
-    Top = 304
-    Width = 161
-    Height = 129
-    Columns = <>
-    Items.ItemData = {
-      05F40000000500000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF010000
-      0008500052004500530045004E00C700410000000000FFFFFFFFFFFFFFFF0000
-      0000FFFFFFFF020000000A46004900440045004C004900440041004400450000
-      000000FFFFFFFFFFFFFFFF00000000FFFFFFFF0300000008430041005200CA00
-      4E0043004900410000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF04000000
-      09440049004300490050004C0049004E00410000000000FFFFFFFFFFFFFFFF00
-      000000FFFFFFFF05000000164100530053004900440055004900440041004400
-      4500200043004F004E005300450043005400490056004100}
-    TabOrder = 7
-    ViewStyle = vsList
-    OnDblClick = ListViewTecnicasOutrosDblClick
-  end
-  object ListViewFisico: TListView
-    Left = 376
-    Top = 128
-    Width = 161
-    Height = 129
-    Columns = <>
-    Items.ItemData = {
-      05940000000300000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF010000
-      000F46006C0065007800E3006F002000640065002000620072006100E7006F00
-      00000000FFFFFFFFFFFFFFFF00000000FFFFFFFF02000000094100620064006F
-      006D0069006E0061006C0000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF03
-      0000000B41006C006F006E00670061006D0065006E0074006F00}
-    TabOrder = 8
-    ViewStyle = vsList
-    OnDblClick = ListViewFisicoDblClick
-  end
-  object ListViewTeoria: TListView
-    Left = 376
-    Top = 304
-    Width = 161
-    Height = 129
-    Columns = <>
-    Items.ItemData = {
-      05500000000200000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF010000
-      0009500065007200670075006E0074006100730000000000FFFFFFFFFFFFFFFF
-      00000000FFFFFFFF020000000554006500780074006F00}
-    TabOrder = 9
-    ViewStyle = vsList
-    OnDblClick = ListViewTeoriaDblClick
+  object DataSource1: TDataSource
+    DataSet = DM.FDQListTecnica
+    Left = 584
+    Top = 144
   end
   object BindSourceDB1: TBindSourceDB
     DataSet = DM.FDQFaixa
     ScopeMappings = <>
-    Left = 88
-    Top = 8
+    Left = 512
+    Top = 152
   end
   object BindingsList1: TBindingsList
     Methods = <>
@@ -348,110 +204,10 @@ inherited FFaixaTecnica: TFFaixaTecnica
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
-    object LinkListControlToField2: TLinkListControlToField
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB2
-      FieldName = 'tecnica_descricao'
-      Control = ListViewTecnicas
-      FillExpressions = <>
-      FillHeaderExpressions = <>
-      FillBreakGroups = <>
-    end
-    object LinkListControlToField4: TLinkListControlToField
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB4
-      FieldName = 'tecnica_descricao'
-      Control = ListViewTecnicasKata
-      FillExpressions = <>
-      FillHeaderExpressions = <>
-      FillBreakGroups = <>
-    end
-    object LinkListControlToField5: TLinkListControlToField
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB5
-      FieldName = 'tecnica_descricao'
-      Control = ListViewTecnicasKumite
-      FillExpressions = <>
-      FillHeaderExpressions = <>
-      FillBreakGroups = <>
-    end
-    object LinkListControlToField6: TLinkListControlToField
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB6
-      FieldName = 'tecnica_descricao'
-      Control = ListViewTecnicasOutros
-      FillExpressions = <>
-      FillHeaderExpressions = <>
-      FillBreakGroups = <>
-    end
-    object LinkListControlToField7: TLinkListControlToField
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB7
-      FieldName = 'tecnica_descricao'
-      Control = ListViewTeoria
-      FillExpressions = <>
-      FillHeaderExpressions = <>
-      FillBreakGroups = <>
-    end
-    object LinkListControlToField8: TLinkListControlToField
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB8
-      FieldName = 'tecnica_descricao'
-      Control = ListViewFisico
-      FillExpressions = <>
-      FillHeaderExpressions = <>
-      FillBreakGroups = <>
-    end
-    object LinkListControlToField3: TLinkListControlToField
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB3
-      FieldName = 'tecnica_descricao'
-      Control = ListViewTecnicasExame
-      FillExpressions = <>
-      FillHeaderExpressions = <>
-      FillBreakGroups = <>
-    end
   end
-  object BindSourceDB2: TBindSourceDB
-    DataSet = DM.FDQListTecnicaKihon
-    ScopeMappings = <>
-    Left = 216
-    Top = 8
-  end
-  object BindSourceDB3: TBindSourceDB
-    DataSet = DM.FDQListTecnicaFaixa
-    ScopeMappings = <>
-    Left = 144
-    Top = 8
-  end
-  object BindSourceDB4: TBindSourceDB
-    DataSet = DM.FDQListTecnicaKata
-    ScopeMappings = <>
-    Left = 408
-    Top = 8
-  end
-  object BindSourceDB5: TBindSourceDB
-    DataSet = DM.FDQListTecnicaKumite
-    ScopeMappings = <>
-    Left = 344
-    Top = 8
-  end
-  object BindSourceDB6: TBindSourceDB
-    DataSet = DM.FDQListTecnicaOutros
-    ScopeMappings = <>
-    Left = 280
-    Top = 8
-  end
-  object BindSourceDB7: TBindSourceDB
-    DataSet = DM.FDQListTecnicaTeoria
-    ScopeMappings = <>
-    Left = 376
-    Top = 256
-  end
-  object BindSourceDB8: TBindSourceDB
-    DataSet = DM.FDQListTecnicaFisico
-    ScopeMappings = <>
-    Left = 384
-    Top = 264
+  object DataSource2: TDataSource
+    DataSet = DM.FDQListaTecnicaFaixa
+    Left = 536
+    Top = 336
   end
 end

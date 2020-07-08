@@ -8,61 +8,31 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UModelo, Vcl.ComCtrls, Vcl.DBCtrls,
   Vcl.ExtCtrls, Vcl.StdCtrls, System.Rtti, System.Bindings.Outputs,
   Vcl.Bind.Editors, Data.Bind.EngExt, Vcl.Bind.DBEngExt, Data.Bind.Components,
-  Data.Bind.DBScope, Vcl.Imaging.pngimage;
+  Data.Bind.DBScope, Vcl.Imaging.pngimage, Data.DB, Vcl.Grids, Vcl.DBGrids;
 
 type
   TFFaixaTecnica = class(TFModelo)
     ComboBox1: TComboBox;
     Label1: TLabel;
-    ListViewTecnicas: TListView;
-    ListViewTecnicasExame: TListView;
+    Image2: TImage;
+    GroupBox1: TGroupBox;
+    GroupBox2: TGroupBox;
+    DBGrid1: TDBGrid;
+    DBGrid2: TDBGrid;
     Label2: TLabel;
     Label3: TLabel;
+    DataSource1: TDataSource;
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
     LinkListControlToField1: TLinkListControlToField;
-    BindSourceDB2: TBindSourceDB;
-    LinkListControlToField2: TLinkListControlToField;
-    BindSourceDB3: TBindSourceDB;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    ListViewTecnicasKata: TListView;
-    Label7: TLabel;
-    Label8: TLabel;
-    ListViewTecnicasKumite: TListView;
-    Label9: TLabel;
-    Label10: TLabel;
-    ListViewTecnicasOutros: TListView;
-    Label11: TLabel;
-    BindSourceDB4: TBindSourceDB;
-    LinkListControlToField4: TLinkListControlToField;
-    BindSourceDB5: TBindSourceDB;
-    LinkListControlToField5: TLinkListControlToField;
-    BindSourceDB6: TBindSourceDB;
-    LinkListControlToField6: TLinkListControlToField;
-    Image2: TImage;
-    Label12: TLabel;
-    ListViewFisico: TListView;
-    Label13: TLabel;
-    Label14: TLabel;
-    ListViewTeoria: TListView;
-    Label15: TLabel;
-    BindSourceDB7: TBindSourceDB;
-    LinkListControlToField7: TLinkListControlToField;
-    BindSourceDB8: TBindSourceDB;
-    LinkListControlToField8: TLinkListControlToField;
-    LinkListControlToField3: TLinkListControlToField;
-    procedure ComboBox1Change(Sender: TObject);
-    procedure ListViewTecnicasDblClick(Sender: TObject);
+    DataSource2: TDataSource;
     procedure FormShow(Sender: TObject);
-    procedure ListViewTecnicasExameDblClick(Sender: TObject);
-    procedure ListViewTecnicasKataDblClick(Sender: TObject);
-    procedure ListViewTecnicasKumiteDblClick(Sender: TObject);
-    procedure ListViewTecnicasOutrosDblClick(Sender: TObject);
-    procedure ListViewFisicoDblClick(Sender: TObject);
-    procedure ListViewTeoriaDblClick(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
+    procedure DBGrid2DblClick(Sender: TObject);
   private
+    procedure CarregarListaTecnicas;
+    procedure CarregarFaixaTecnica;
     { Private declarations }
   public
     { Public declarations }
@@ -77,460 +47,65 @@ implementation
 
 uses UDM;
 
+procedure TFFaixaTecnica.DBGrid1DblClick(Sender: TObject);
+begin
+  inherited;
+  DM.fdqfaixatecnica.Append;
+  DM.FDQfaixatecnicafaixa_id.AsInteger := DM.FDQFaixafaixa_id.AsInteger;
+  DM.FDQfaixatecnicatecnica_id.AsInteger :=
+    DM.FDQListTecnicatecnica_id.AsInteger;
+  DM.fdqfaixatecnica.Post;
+  DM.FDConnection1.CommitRetaining;
+  ShowMessage('Salvo com sucesso!');
+  // CarregarListaTecnicas;
+  CarregarFaixaTecnica
+end;
+
+procedure TFFaixaTecnica.DBGrid2DblClick(Sender: TObject);
+var
+  sql: string;
+begin
+  inherited;
+  ShowMessage(DM.FDQListaTecnicaFaixatecnica_descricao.asstring);
+
+  sql := 'delete from faixatecnica where faixatecnica_id=' +
+    DM.FDQListaTecnicaFaixafaixatecnica_id.asstring;
+  DM.FDConnection1.ExecSQL(sql);
+  DM.FDConnection1.CommitRetaining;
+  CarregarFaixaTecnica;
+  CarregarListaTecnicas;
+end;
+
+procedure TFFaixaTecnica.CarregarListaTecnicas;
+begin
+  DM.FDQListTecnica.Active := True;
+  DM.FDQListTecnica.Close;
+  DM.FDQListTecnica.ParamByName('faixa').AsInteger :=
+    DM.FDQFaixafaixa_id.AsInteger;
+  DM.FDQListTecnica.Open;
+end;
+
 procedure TFFaixaTecnica.ComboBox1Change(Sender: TObject);
 begin
   inherited;
-  DM.FDQListTecnicaFaixa.Active := True;
-  DM.FDQListTecnicaKihon.Active := True;
-
-  DM.FDQListTecnicaFaixa.Close;
-  DM.FDQListTecnicaFaixa.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaFaixa.Open();
-
-  // kihon
-  DM.FDQListTecnicaKihon.Close;
-  DM.FDQListTecnicaKihon.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKihon.Open();
-  // Kata
-  DM.FDQListTecnicaKata.Close;
-  DM.FDQListTecnicaKata.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKata.Open();
-  // Kumite
-  DM.FDQListTecnicaKumite.Close;
-  DM.FDQListTecnicaKumite.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKumite.Open();
-  // Outros requisitos
-  DM.FDQListTecnicaOutros.Close;
-  DM.FDQListTecnicaOutros.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaOutros.Open();
-  // Fisico
-  DM.FDQListTecnicaFisico.Close;
-  DM.FDQListTecnicaFisico.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaFisico.Open();
-  // Teoria
-  DM.FDQListTecnicaTeoria.Close;
-  DM.FDQListTecnicaTeoria.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaTeoria.Open();
-
+  CarregarFaixaTecnica;
+  CarregarListaTecnicas;
 end;
 
 procedure TFFaixaTecnica.FormShow(Sender: TObject);
 begin
   inherited;
-  DM.FDQListTecnicaFaixa.Active := True;
-  DM.FDQListTecnicaKihon.Active := True;
-  DM.FDQListTecnicaKata.Active := True;
-  DM.FDQListTecnicaKumite.Active := True;
-  DM.FDQListTecnicaOutros.Active := True;
-  DM.FDQListTecnicaTeoria.Active := True;
-  DM.FDQListTecnicaFisico.Active := True;
-
-  DM.FDQListTecnicaFaixa.Close;
-  DM.FDQListTecnicaFaixa.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaFaixa.Open();
-
-  // kihon
-  DM.FDQListTecnicaKihon.Close;
-  DM.FDQListTecnicaKihon.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKihon.Open();
-  // Kata
-  DM.FDQListTecnicaKata.Close;
-  DM.FDQListTecnicaKata.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKata.Open();
-  // Kumite
-  DM.FDQListTecnicaKumite.Close;
-  DM.FDQListTecnicaKumite.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKumite.Open();
-  // Outros requisitos
-  DM.FDQListTecnicaOutros.Close;
-  DM.FDQListTecnicaOutros.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaOutros.Open();
-  // Fisico
-  DM.FDQListTecnicaFisico.Close;
-  DM.FDQListTecnicaFisico.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaFisico.Open();
-  // Teoria
-  DM.FDQListTecnicaTeoria.Close;
-  DM.FDQListTecnicaTeoria.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaTeoria.Open();
-
+  CarregarListaTecnicas;
+  CarregarFaixaTecnica
 end;
 
-procedure TFFaixaTecnica.ListViewFisicoDblClick(Sender: TObject);
+procedure TFFaixaTecnica.CarregarFaixaTecnica;
 begin
-  inherited;
-  DM.fdqfaixatecnica.Active := True;
-  DM.FDQListTecnicaOutros.Active := True;
-  DM.fdqfaixatecnica.Append;
-  DM.FDQfaixatecnicafaixa_id.AsInteger := DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQfaixatecnicatecnica_id.AsInteger :=
-    DM.FDQListTecnicaFisicotecnica_id.AsInteger;
-  DM.fdqfaixatecnica.Post;
-  DM.FDConnection1.CommitRetaining;
-
-  DM.FDQListTecnicaKihon.Active := True;
-
-  // kihon
-  DM.FDQListTecnicaKihon.Close;
-  DM.FDQListTecnicaKihon.ParamByName('faixa').AsInteger :=
+  DM.FDQListaTecnicaFaixa.Active := True;
+  DM.FDQListaTecnicaFaixa.Close;
+  DM.FDQListaTecnicaFaixa.ParamByName('faixa').AsInteger :=
     DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKihon.Open();
-  // Kata
-  DM.FDQListTecnicaKata.Close;
-  DM.FDQListTecnicaKata.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKata.Open();
-  // Kumite
-  DM.FDQListTecnicaKumite.Close;
-  DM.FDQListTecnicaKumite.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKumite.Open();
-  // Outros requisitos
-  DM.FDQListTecnicaOutros.Close;
-  DM.FDQListTecnicaOutros.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaOutros.Open();
-
-  // Fisico
-  DM.FDQListTecnicaFisico.Close;
-  DM.FDQListTecnicaFisico.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaFisico.Open();
-  // Teoria
-  DM.FDQListTecnicaTeoria.Close;
-  DM.FDQListTecnicaTeoria.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaTeoria.Open();
-
-  DM.FDQListTecnicaFaixa.Close;
-  DM.FDQListTecnicaFaixa.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaFaixa.Open();
-end;
-
-procedure TFFaixaTecnica.ListViewTecnicasDblClick(Sender: TObject);
-begin
-  inherited;
-
-  DM.fdqfaixatecnica.Active := True;
-  DM.fdqfaixatecnica.Append;
-  DM.FDQfaixatecnicafaixa_id.AsInteger := DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQfaixatecnicatecnica_id.AsInteger :=
-    DM.FDQListTecnicaKihontecnica_id.AsInteger;
-  DM.fdqfaixatecnica.Post;
-  DM.FDConnection1.CommitRetaining;
-
-  DM.FDQListTecnicaKihon.Active := True;
-
-  // kihon
-  DM.FDQListTecnicaKihon.Close;
-  DM.FDQListTecnicaKihon.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKihon.Open();
-  // Kata
-  DM.FDQListTecnicaKata.Close;
-  DM.FDQListTecnicaKata.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKata.Open();
-  // Kumite
-  DM.FDQListTecnicaKumite.Close;
-  DM.FDQListTecnicaKumite.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKumite.Open();
-  // Outros requisitos
-  DM.FDQListTecnicaOutros.Close;
-  DM.FDQListTecnicaOutros.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaOutros.Open();
-
-  // Fisico
-  DM.FDQListTecnicaFisico.Close;
-  DM.FDQListTecnicaFisico.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaFisico.Open();
-  // Teoria
-  DM.FDQListTecnicaTeoria.Close;
-  DM.FDQListTecnicaTeoria.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaTeoria.Open();
-
-  DM.FDQListTecnicaFaixa.Close;
-  DM.FDQListTecnicaFaixa.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaFaixa.Open();
-end;
-
-procedure TFFaixaTecnica.ListViewTecnicasExameDblClick(Sender: TObject);
-var
-  sql: string;
-begin
-  inherited;
-(*
-    DM.FDQListTecnicaFaixa.Close;
-    DM.FDQListTecnicaFaixa.ParamByName('faixa').AsInteger :=
-      DM.FDQFaixafaixa_id.AsInteger;
-    DM.FDQListTecnicaFaixa.Open();
-*)
-
-  ShowMessage(DM.FDQListTecnicaFaixatecnica_descricao.AsString + ' ' +
-    DM.FDQListTecnicaFaixafaixatecnica_id.AsString);
-
-  sql := 'delete from faixatecnica where faixatecnica_id=' +
-    DM.FDQListTecnicaFaixafaixatecnica_id.AsString;
-  DM.FDConnection1.ExecSQL(sql);
- // DM.FDConnection1.CommitRetaining;
-
-  // kihon
-  DM.FDQListTecnicaKihon.Close;
-  DM.FDQListTecnicaKihon.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKihon.Open();
-  // Kata
-  DM.FDQListTecnicaKata.Close;
-  DM.FDQListTecnicaKata.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKata.Open();
-  // Kumite
-  DM.FDQListTecnicaKumite.Close;
-  DM.FDQListTecnicaKumite.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKumite.Open();
-  // Outros requisitos
-  DM.FDQListTecnicaOutros.Close;
-  DM.FDQListTecnicaOutros.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaOutros.Open();
-  // Fisico
-  DM.FDQListTecnicaFisico.Close;
-  DM.FDQListTecnicaFisico.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaFisico.Open();
-  // Teoria
-  DM.FDQListTecnicaTeoria.Close;
-  DM.FDQListTecnicaTeoria.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaTeoria.Open();
-
-end;
-
-procedure TFFaixaTecnica.ListViewTecnicasKataDblClick(Sender: TObject);
-begin
-  inherited;
-  DM.fdqfaixatecnica.Active := True;
-  DM.fdqfaixatecnica.Append;
-  DM.FDQfaixatecnicafaixa_id.AsInteger := DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQfaixatecnicatecnica_id.AsInteger :=
-    DM.FDQListTecnicaKatatecnica_id.AsInteger;
-  DM.fdqfaixatecnica.Post;
-  DM.FDConnection1.CommitRetaining;
-
-  DM.FDQListTecnicaKihon.Active := True;
-
-  // kihon
-  DM.FDQListTecnicaKihon.Close;
-  DM.FDQListTecnicaKihon.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKihon.Open();
-  // Kata
-  DM.FDQListTecnicaKata.Close;
-  DM.FDQListTecnicaKata.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKata.Open();
-  // Kumite
-  DM.FDQListTecnicaKumite.Close;
-  DM.FDQListTecnicaKumite.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKumite.Open();
-  // Outros requisitos
-  DM.FDQListTecnicaOutros.Close;
-  DM.FDQListTecnicaOutros.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaOutros.Open();
-  // Fisico
-  DM.FDQListTecnicaFisico.Close;
-  DM.FDQListTecnicaFisico.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaFisico.Open();
-  // Teoria
-  DM.FDQListTecnicaTeoria.Close;
-  DM.FDQListTecnicaTeoria.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaTeoria.Open();
-
-  DM.FDQListTecnicaFaixa.Close;
-  DM.FDQListTecnicaFaixa.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaFaixa.Open();
-
-end;
-
-procedure TFFaixaTecnica.ListViewTecnicasKumiteDblClick(Sender: TObject);
-begin
-  inherited;
-  DM.fdqfaixatecnica.Active := True;
-  DM.fdqfaixatecnica.Append;
-  DM.FDQfaixatecnicafaixa_id.AsInteger := DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQfaixatecnicatecnica_id.AsInteger :=
-    DM.FDQListTecnicaKumitetecnica_id.AsInteger;
-  DM.fdqfaixatecnica.Post;
-  DM.FDConnection1.CommitRetaining;
-
-  DM.FDQListTecnicaKihon.Active := True;
-
-  // kihon
-  DM.FDQListTecnicaKihon.Close;
-  DM.FDQListTecnicaKihon.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKihon.Open();
-  // Kata
-  DM.FDQListTecnicaKata.Close;
-  DM.FDQListTecnicaKata.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKata.Open();
-  // Kumite
-  DM.FDQListTecnicaKumite.Close;
-  DM.FDQListTecnicaKumite.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKumite.Open();
-  // Outros requisitos
-  DM.FDQListTecnicaOutros.Close;
-  DM.FDQListTecnicaOutros.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaOutros.Open();
-
-  // Fisico
-  DM.FDQListTecnicaFisico.Close;
-  DM.FDQListTecnicaFisico.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaFisico.Open();
-  // Teoria
-  DM.FDQListTecnicaTeoria.Close;
-  DM.FDQListTecnicaTeoria.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaTeoria.Open();
-
-  DM.FDQListTecnicaFaixa.Close;
-  DM.FDQListTecnicaFaixa.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaFaixa.Open();
-end;
-
-procedure TFFaixaTecnica.ListViewTecnicasOutrosDblClick(Sender: TObject);
-begin
-  inherited;
-  DM.fdqfaixatecnica.Active := True;
-  DM.FDQListTecnicaOutros.Active := True;
-  DM.fdqfaixatecnica.Append;
-  DM.FDQfaixatecnicafaixa_id.AsInteger := DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQfaixatecnicatecnica_id.AsInteger :=
-    DM.FDQListTecnicaOutrostecnica_id.AsInteger;
-  DM.fdqfaixatecnica.Post;
-  DM.FDConnection1.CommitRetaining;
-
-  DM.FDQListTecnicaKihon.Active := True;
-
-  // kihon
-  DM.FDQListTecnicaKihon.Close;
-  DM.FDQListTecnicaKihon.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKihon.Open();
-  // Kata
-  DM.FDQListTecnicaKata.Close;
-  DM.FDQListTecnicaKata.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKata.Open();
-  // Kumite
-  DM.FDQListTecnicaKumite.Close;
-  DM.FDQListTecnicaKumite.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKumite.Open();
-  // Outros requisitos
-  DM.FDQListTecnicaOutros.Close;
-  DM.FDQListTecnicaOutros.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaOutros.Open();
-
-  // Fisico
-  DM.FDQListTecnicaFisico.Close;
-  DM.FDQListTecnicaFisico.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaFisico.Open();
-  // Teoria
-  DM.FDQListTecnicaTeoria.Close;
-  DM.FDQListTecnicaTeoria.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaTeoria.Open();
-
-  DM.FDQListTecnicaFaixa.Close;
-  DM.FDQListTecnicaFaixa.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaFaixa.Open();
-end;
-
-procedure TFFaixaTecnica.ListViewTeoriaDblClick(Sender: TObject);
-begin
-  inherited;
-  DM.fdqfaixatecnica.Active := True;
-  DM.FDQListTecnicaOutros.Active := True;
-  DM.fdqfaixatecnica.Append;
-  DM.FDQfaixatecnicafaixa_id.AsInteger := DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQfaixatecnicatecnica_id.AsInteger :=
-    DM.FDQListTecnicaTeoriatecnica_id.AsInteger;
-  DM.fdqfaixatecnica.Post;
-  DM.FDConnection1.CommitRetaining;
-
-  DM.FDQListTecnicaKihon.Active := True;
-
-  // kihon
-  DM.FDQListTecnicaKihon.Close;
-  DM.FDQListTecnicaKihon.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKihon.Open();
-  // Kata
-  DM.FDQListTecnicaKata.Close;
-  DM.FDQListTecnicaKata.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKata.Open();
-  // Kumite
-  DM.FDQListTecnicaKumite.Close;
-  DM.FDQListTecnicaKumite.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaKumite.Open();
-  // Outros requisitos
-  DM.FDQListTecnicaOutros.Close;
-  DM.FDQListTecnicaOutros.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaOutros.Open();
-
-  // Fisico
-  DM.FDQListTecnicaFisico.Close;
-  DM.FDQListTecnicaFisico.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaFisico.Open();
-  // Teoria
-  DM.FDQListTecnicaTeoria.Close;
-  DM.FDQListTecnicaTeoria.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaTeoria.Open();
-
-  DM.FDQListTecnicaFaixa.Close;
-  DM.FDQListTecnicaFaixa.ParamByName('faixa').AsInteger :=
-    DM.FDQFaixafaixa_id.AsInteger;
-  DM.FDQListTecnicaFaixa.Open();
+  DM.FDQListaTecnicaFaixa.Open();
 end;
 
 end.

@@ -148,14 +148,7 @@ inherited FCadExame: TFCadExame
       Top = 28
       Width = 170
       Height = 21
-      ItemIndex = 0
       TabOrder = 1
-      Text = 'Branca-Cinza'
-      Items.Strings = (
-        'Branca-Cinza'
-        'Cinza-Azul'
-        'Azul-Amarela'
-        'Amarela-Vermelha')
     end
     object EditData: TEdit
       Left = 447

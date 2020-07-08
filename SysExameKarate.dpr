@@ -15,7 +15,8 @@ uses
   UExameFaixa in 'UExameFaixa.pas' {FExame},
   UConfiguracao in 'UConfiguracao.pas' {FConfiguracao},
   UAcademia in 'UAcademia.pas' {FAcademia},
-  UResumo in 'UResumo.pas' {FResumo};
+  UResumo in 'UResumo.pas' {FResumo},
+  UListExames in 'UListExames.pas' {FListaExames};
 
 {$R *.res}
 
@@ -36,5 +37,6 @@ begin
   Application.CreateForm(TFConfiguracao, FConfiguracao);
   Application.CreateForm(TFAcademia, FAcademia);
   Application.CreateForm(TFResumo, FResumo);
+  Application.CreateForm(TFListaExames, FListaExames);
   Application.Run;
 end.

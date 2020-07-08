@@ -222,7 +222,7 @@ object DM: TDM
       Size = 30
     end
   end
-  object FDQListTecnicaKihon: TFDQuery
+  object FDQListTecnica: TFDQuery
     Active = True
     Connection = FDConnection1
     SQL.Strings = (
@@ -230,7 +230,7 @@ object DM: TDM
       
         'WHERE t.tecnica_id NOT IN (SELECT ft.tecnica_id FROM faixatecnic' +
         'a ft where ft.faixa_id =:faixa )'
-      'and t.grupo = '#39'Kihon'#39)
+      'order by grupo')
     Left = 168
     Top = 320
     ParamData = <
@@ -240,18 +240,18 @@ object DM: TDM
         ParamType = ptInput
         Value = Null
       end>
-    object FDQListTecnicaKihontecnica_id: TFDAutoIncField
+    object FDQListTecnicatecnica_id: TFDAutoIncField
       FieldName = 'tecnica_id'
       Origin = 'tecnica_id'
       ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = True
     end
-    object FDQListTecnicaKihontecnica_descricao: TStringField
+    object FDQListTecnicatecnica_descricao: TStringField
       FieldName = 'tecnica_descricao'
       Origin = 'tecnica_descricao'
       Size = 50
     end
-    object FDQListTecnicaKihonGrupo: TStringField
+    object FDQListTecnicaGrupo: TStringField
       FieldName = 'Grupo'
       Origin = 'Grupo'
       Size = 30
@@ -262,7 +262,7 @@ object DM: TDM
     Connection = FDConnection1
     SQL.Strings = (
       'select * from faixatecnica f'
-      'inner join tecnica t on t.tecnica_id - f.tecnica_id')
+      'inner join tecnica t on t.tecnica_id = f.tecnica_id')
     Left = 112
     Top = 200
     object FDQfaixatecnicafaixatecnica_id: TFDAutoIncField
@@ -286,111 +286,6 @@ object DM: TDM
       ProviderFlags = []
       ReadOnly = True
       Size = 50
-    end
-  end
-  object FDQListTecnicaKata: TFDQuery
-    Active = True
-    Connection = FDConnection1
-    SQL.Strings = (
-      'SELECT * FROM tecnica t'
-      
-        'WHERE t.tecnica_id NOT IN (SELECT ft.tecnica_id FROM faixatecnic' +
-        'a ft where ft.faixa_id =:faixa )'
-      'and t.grupo = '#39'Kata'#39)
-    Left = 264
-    Top = 320
-    ParamData = <
-      item
-        Name = 'FAIXA'
-        DataType = ftInteger
-        ParamType = ptInput
-        Value = Null
-      end>
-    object FDQListTecnicaKatatecnica_id: TFDAutoIncField
-      FieldName = 'tecnica_id'
-      Origin = 'tecnica_id'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object FDQListTecnicaKatatecnica_descricao: TStringField
-      FieldName = 'tecnica_descricao'
-      Origin = 'tecnica_descricao'
-      Size = 50
-    end
-    object FDQListTecnicaKataGrupo: TStringField
-      FieldName = 'Grupo'
-      Origin = 'Grupo'
-      Size = 30
-    end
-  end
-  object FDQListTecnicaKumite: TFDQuery
-    Active = True
-    Connection = FDConnection1
-    SQL.Strings = (
-      'SELECT * FROM tecnica t'
-      
-        'WHERE t.tecnica_id NOT IN (SELECT ft.tecnica_id FROM faixatecnic' +
-        'a ft where ft.faixa_id =:faixa )'
-      'and t.grupo = '#39'Kumite'#39)
-    Left = 352
-    Top = 320
-    ParamData = <
-      item
-        Name = 'FAIXA'
-        DataType = ftInteger
-        ParamType = ptInput
-        Value = Null
-      end>
-    object FDQListTecnicaKumitetecnica_id: TFDAutoIncField
-      FieldName = 'tecnica_id'
-      Origin = 'tecnica_id'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object FDQListTecnicaKumitetecnica_descricao: TStringField
-      FieldName = 'tecnica_descricao'
-      Origin = 'tecnica_descricao'
-      Size = 50
-    end
-    object FDQListTecnicaKumiteGrupo: TStringField
-      FieldName = 'Grupo'
-      Origin = 'Grupo'
-      Size = 30
-    end
-  end
-  object FDQListTecnicaOutros: TFDQuery
-    Active = True
-    Connection = FDConnection1
-    SQL.Strings = (
-      'SELECT * FROM tecnica t'
-      
-        'WHERE t.tecnica_id NOT IN (SELECT ft.tecnica_id FROM faixatecnic' +
-        'a ft where ft.faixa_id =:faixa )'
-      'and t.grupo = '#39'Outros requisitos'#39)
-    Left = 448
-    Top = 320
-    ParamData = <
-      item
-        Name = 'FAIXA'
-        DataType = ftInteger
-        ParamType = ptInput
-        Value = Null
-      end>
-    object FDQListTecnicaOutrostecnica_id: TFDAutoIncField
-      FieldName = 'tecnica_id'
-      Origin = 'tecnica_id'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object FDQListTecnicaOutrostecnica_descricao: TStringField
-      FieldName = 'tecnica_descricao'
-      Origin = 'tecnica_descricao'
-      Size = 50
-    end
-    object FDQListTecnicaOutrosGrupo: TStringField
-      FieldName = 'Grupo'
-      Origin = 'Grupo'
-      Size = 30
     end
   end
   object FDQAlunoByNome: TFDQuery
@@ -932,7 +827,7 @@ object DM: TDM
       'inner join academia ac on ac.academia_id = a.alunoacademia_id'
       'order by exame_data desc')
     Left = 256
-    Top = 392
+    Top = 376
     object FDQListaAlunoExameexame_id: TFDAutoIncField
       FieldName = 'exame_id'
       Origin = 'exame_id'
@@ -1081,74 +976,161 @@ object DM: TDM
       Size = 30
     end
   end
-  object FDQListTecnicaFisico: TFDQuery
+  object FDQListaTecnicaFaixa: TFDQuery
     Active = True
     Connection = FDConnection1
     SQL.Strings = (
-      'SELECT * FROM tecnica t'
-      
-        'WHERE t.tecnica_id NOT IN (SELECT ft.tecnica_id FROM faixatecnic' +
-        'a ft where ft.faixa_id =:faixa )'
-      'and t.grupo = '#39'F'#237'sico'#39)
-    Left = 528
-    Top = 320
+      'select * from faixatecnica f'
+      'inner join tecnica t on t.tecnica_id = f.tecnica_id'
+      'where faixa_id = :faixa')
+    Left = 272
+    Top = 312
     ParamData = <
       item
         Name = 'FAIXA'
         DataType = ftInteger
         ParamType = ptInput
-        Value = Null
+        Value = 8
       end>
-    object FDQListTecnicaFisicotecnica_id: TFDAutoIncField
+    object FDQListaTecnicaFaixafaixatecnica_id: TFDAutoIncField
+      FieldName = 'faixatecnica_id'
+      Origin = 'faixatecnica_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object FDQListaTecnicaFaixafaixa_id: TIntegerField
+      FieldName = 'faixa_id'
+      Origin = 'faixa_id'
+    end
+    object FDQListaTecnicaFaixatecnica_id: TIntegerField
       FieldName = 'tecnica_id'
       Origin = 'tecnica_id'
-      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object FDQListaTecnicaFaixatecnica_id_1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'tecnica_id_1'
+      Origin = 'tecnica_id'
+      ProviderFlags = []
       ReadOnly = True
     end
-    object FDQListTecnicaFisicotecnica_descricao: TStringField
+    object FDQListaTecnicaFaixatecnica_descricao: TStringField
+      AutoGenerateValue = arDefault
       FieldName = 'tecnica_descricao'
       Origin = 'tecnica_descricao'
+      ProviderFlags = []
+      ReadOnly = True
       Size = 50
     end
-    object FDQListTecnicaFisicoGrupo: TStringField
+    object FDQListaTecnicaFaixaGrupo: TStringField
+      AutoGenerateValue = arDefault
       FieldName = 'Grupo'
       Origin = 'Grupo'
+      ProviderFlags = []
+      ReadOnly = True
       Size = 30
     end
   end
-  object FDQListTecnicaTeoria: TFDQuery
+  object FDQListExame: TFDQuery
     Active = True
     Connection = FDConnection1
     SQL.Strings = (
-      'SELECT * FROM tecnica t'
-      
-        'WHERE t.tecnica_id NOT IN (SELECT ft.tecnica_id FROM faixatecnic' +
-        'a ft where ft.faixa_id =:faixa )'
-      'and t.grupo = '#39'Teoria'#39)
-    Left = 624
-    Top = 320
-    ParamData = <
-      item
-        Name = 'FAIXA'
-        DataType = ftInteger
-        ParamType = ptInput
-        Value = Null
-      end>
-    object FDQListTecnicaTeoriatecnica_id: TFDAutoIncField
-      FieldName = 'tecnica_id'
-      Origin = 'tecnica_id'
+      'select * from exame e '
+      'inner join aluno a on a.aluno_id = e.examealuno_id'
+      'inner join faixa f on e.examefaixa_id = f.faixa_id'
+      'order by exame_data desc, aluno_nome, faixa_id')
+    Left = 544
+    Top = 360
+    object FDQListExameexame_id: TFDAutoIncField
+      FieldName = 'exame_id'
+      Origin = 'exame_id'
       ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object FDQListExameexamealuno_id: TIntegerField
+      FieldName = 'examealuno_id'
+      Origin = 'examealuno_id'
+    end
+    object FDQListExameexame_data: TDateField
+      FieldName = 'exame_data'
+      Origin = 'exame_data'
+    end
+    object FDQListExameexamefaixa_id: TIntegerField
+      FieldName = 'examefaixa_id'
+      Origin = 'examefaixa_id'
+    end
+    object FDQListExamealuno_id: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'aluno_id'
+      Origin = 'aluno_id'
+      ProviderFlags = []
       ReadOnly = True
     end
-    object FDQListTecnicaTeoriatecnica_descricao: TStringField
-      FieldName = 'tecnica_descricao'
-      Origin = 'tecnica_descricao'
-      Size = 50
+    object FDQListExamealuno_cpf: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'aluno_cpf'
+      Origin = 'aluno_cpf'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 11
     end
-    object FDQListTecnicaTeoriaGrupo: TStringField
-      FieldName = 'Grupo'
-      Origin = 'Grupo'
-      Size = 30
+    object FDQListExamealuno_nome: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'aluno_nome'
+      Origin = 'aluno_nome'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 60
+    end
+    object FDQListExamealuno_celular: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'aluno_celular'
+      Origin = 'aluno_celular'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 12
+    end
+    object FDQListExamealuno_email: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'aluno_email'
+      Origin = 'aluno_email'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 100
+    end
+    object FDQListExamealuno_observacao: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'aluno_observacao'
+      Origin = 'aluno_observacao'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 200
+    end
+    object FDQListExamealunoacademia_id: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'alunoacademia_id'
+      Origin = 'alunoacademia_id'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FDQListExamealuno_img: TBlobField
+      AutoGenerateValue = arDefault
+      FieldName = 'aluno_img'
+      Origin = 'aluno_img'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FDQListExamefaixa_id: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'faixa_id'
+      Origin = 'faixa_id'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FDQListExamefaixa_descricao: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'faixa_descricao'
+      Origin = 'faixa_descricao'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 40
     end
   end
 end
