@@ -78,8 +78,13 @@ inherited FFaixaTecnica: TFFaixaTecnica
     Top = 80
     Width = 529
     Height = 21
+    ItemIndex = 0
     TabOrder = 2
+    Text = 'Branca - Cinza'
     OnChange = ComboBox1Change
+    Items.Strings = (
+      'Branca - Cinza'
+      'Cinza - Azul')
   end
   object GroupBox1: TGroupBox
     Left = 8

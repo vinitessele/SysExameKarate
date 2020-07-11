@@ -83,7 +83,8 @@ begin
   try
     // Pega o grafico da Tabela
     // Imagem.Picture.LoadFromFile(dm.FDQListaAlunoExame.FieldByName('academia_logo').AsString);
-    caminho := (ExtractFilePath(Application.ExeName) + 'MeuArquivo.jpg');
+
+    caminho := (ExtractFilePath(Application.ExeName) + 'MinhaImagem.png');
 
     vFoto := dm.FDQListaAlunoExame.CreateBlobStream
       (dm.FDQListaAlunoExame.FieldByName('academia_logo'), bmRead);
@@ -93,7 +94,7 @@ begin
       Temp := TBitmap.Create;
       Temp.Assign(Image1.Picture.Graphic);
       Temp := PadronizaTamanho(Temp, 80, 80);
-      Image1.Picture := nil;
+      Image1.Picture.Assign(nil);
 
       try
         Temp.SaveToFile(caminho);
@@ -101,6 +102,20 @@ begin
         Temp.Free;
       end;
 
+    end
+    else
+    begin
+      Image1.Picture.Bitmap.LoadFromFile(caminho);
+      Temp := TBitmap.Create;
+      Temp.Assign(Image1.Picture.Graphic);
+      Temp := PadronizaTamanho(Temp, 80, 80);
+      Image1.Picture.Assign(nil);
+
+      try
+        Temp.SaveToFile(caminho);
+      finally
+        Temp.Free;
+      end;
     end;
     Path := ExtractFilePath(Application.ExeName);
     Word := CreateOleObject('Word.Basic');
@@ -108,31 +123,37 @@ begin
     Word.AppShow;
     Word.Appmaximize;
     // 1, coluna, linha
-    Word.TableInsertTable(1, 2, 1);
-    Word.centerPara;
-    Word.TableSelectTable; // seleciona a tabela inteira
-    Word.TableAutoFormat(Format := 1);
+    // Word.TableInsertTable(1, 2, 1);
+    // Word.centerPara;
+    // Word.TableSelectTable; // seleciona a tabela inteira
+    // Word.TableAutoFormat(Format := 1);
     // usa a auto formatacao de tabelas do Word a vigesima para ser exato muda forma da tabela max 30
-    Word.startOfRow; // coloca o cursor piscando no comeco da linha
+    // Word.startOfRow; // coloca o cursor piscando no comeco da linha
+    Word.LeftPara;
     Word.Insertpicture(caminho);
+    // Word.Insert(#13);
 
     // Resumo
 
     if RadioGroup1.ItemIndex = 0 then
     begin
-      Word.NextCell;
+      Word.LeftPara;
+      Word.Insertpicture(caminho);
+      // Word.NextCell;
       Word.bold; // coloca negrito
-      Word.centerPara;
+      // Word.centerPara;
       Word.Insert('Ficha de Exame médias');
       Word.Insert(#32 + dm.FDQListaAlunoExameexame_data.AsString);
       Word.bold(false); // tira o negrito
-      Word.Insert(#13 + dm.FDQListaAlunoExamealuno_nome.AsString);
-      Word.Insert(#13 + dm.FDQListaAlunoExamefaixa_descricao.AsString);
+      Word.Insert(#32 + dm.FDQListaAlunoExamealuno_nome.AsString);
+      Word.Insert(#32 + dm.FDQListaAlunoExamefaixa_descricao.AsString);
+      Word.Insert(#13);
       // Word.tableSplitCells(NumColumns := 3, NumRows := 1);
       // divide a celula em 3 colunas e 1 linha
       dm.FDQGrupo.Active := True;
       dm.FDQGrupo.Close;
       dm.FDQGrupo.Open();
+      dm.FDQGrupo.First;
       // Word.tableSplitCells(NumColumns := dm.FDQGrupo.RecordCount, NumRows := 1);
       while not dm.FDQGrupo.Eof do
       begin
@@ -144,15 +165,19 @@ begin
           dm.FDQGrupogrupo_descricao.AsString;
         dm.FDQListTecnicasAlunoMedias.Open();
 
-        Word.NextCell;
+        // Word.NextCell;
         Word.justifyPara; // coloca o texto no esquerda
         Word.bold(false); // tira o negrito
-        Word.FontSize(12);
-        Word.Insert(#32#32 + dm.FDQListTecnicasAlunoMediasGrupo.AsString);
-        Word.Insert(#32#32 + formatfloat('#0.00', dm.FDQListTecnicasAlunoMediasmedia.AsFloat));
+        Word.FontSize(10);
+        Word.Insert(#32#32#32 + dm.FDQGrupogrupo_descricao.AsString);
+        Word.Insert(#32#32#32 + formatfloat('#0.00',
+          dm.FDQListTecnicasAlunoMediasmedia.AsFloat));
         dm.FDQGrupo.Next;
       end;
 
+      // Word.FileSaveAs((ExtractFilePath(Application.ExeName) +
+      // dm.FDQListaAlunoExamealuno_nome.AsString + '.doc'), 3);
+      // Salva o arquivo
       // monta uma tabela com o texto selecionado
       // Word.Insertpicture(Path + '\Imagem1.jpg');
       // Word.Insert(#13'Imagem 2'#13);
@@ -174,6 +199,7 @@ begin
       dm.FDQGrupo.Active := True;
       dm.FDQGrupo.Close;
       dm.FDQGrupo.Open();
+      dm.FDQGrupo.First;
 
       dm.FDQListTecnicasAlunoNotas.Active := True;
       dm.FDQListTecnicasAlunoNotas.Close;
@@ -200,7 +226,8 @@ begin
 
           Word.centerPara;
           Word.Insert(dm.FDQListTecnicasAlunoNotasGrupo.AsString + #32 + 'Média'
-            + #32 + formatfloat('#0.00', dm.FDQListTecnicasAlunoMediasmedia.AsFloat));
+            + #32 + formatfloat('#0.00',
+            dm.FDQListTecnicasAlunoMediasmedia.AsFloat));
           Word.NextCell;
           Word.NextCell;
           grupo := dm.FDQListTecnicasAlunoNotasGrupo.AsString;
@@ -212,10 +239,72 @@ begin
         Word.NextCell;
         dm.FDQListTecnicasAlunoNotas.Next;
       end;
+      // Word.FileSaveAs((ExtractFilePath(Application.ExeName) +
+      // dm.FDQListaAlunoExamealuno_nome.AsString + '.doc'), 3);
+      // Salva o arquivo
+
+    end
+    else if RadioGroup1.ItemIndex = 2 then
+    begin
+      Word.NextCell;
+      Word.bold; // coloca negrito
+      Word.centerPara;
+      Word.Insert('Ficha de Exame Completa');
+      Word.Insert(#32 + dm.FDQListaAlunoExameexame_data.AsString);
+      Word.bold(false); // tira o negrito
+      Word.Insert(#13 + dm.FDQListaAlunoExamealuno_nome.AsString);
+      Word.centerPara;
+      Word.Insert(#13 + dm.FDQListaAlunoExamefaixa_descricao.AsString);
+      Word.NextCell;
+
+      dm.FDQGrupo.Active := True;
+      dm.FDQGrupo.Close;
+      dm.FDQGrupo.Open();
+      dm.FDQGrupo.First;
+
+      dm.FDQListTecnicasAlunoNotas.Active := True;
+      dm.FDQListTecnicasAlunoNotas.Close;
+      dm.FDQListTecnicasAlunoNotas.ParamByName('exame').AsInteger :=
+        dm.FDQListaAlunoExameexame_id.AsInteger;
+      dm.FDQListTecnicasAlunoNotas.Open();
+
+      while not dm.FDQListTecnicasAlunoNotas.Eof do
+      begin
+        Word.bold(false); // tira o negrito
+        // Word.LeftPara;
+        Word.justifyPara; // coloca o texto no esquerda
+
+        if grupo <> dm.FDQListTecnicasAlunoNotasGrupo.AsString then
+        begin
+          // média por grupo
+          dm.FDQListTecnicasAlunoMedias.Active := True;
+          dm.FDQListTecnicasAlunoMedias.Close;
+          dm.FDQListTecnicasAlunoMedias.ParamByName('exame').AsInteger :=
+            dm.FDQListTecnicasAlunoNotasexame_id.AsInteger;
+          dm.FDQListTecnicasAlunoMedias.ParamByName('grupo').AsString :=
+            dm.FDQListTecnicasAlunoNotasGrupo.AsString;
+          dm.FDQListTecnicasAlunoMedias.Open();
+
+          Word.centerPara;
+          // Word.Insert(dm.FDQListTecnicasAlunoNotasGrupo.AsString + #32 + 'Média'
+          // + #32 + formatfloat('#0.00',
+          // dm.FDQListTecnicasAlunoMediasmedia.AsFloat));
+          Word.NextCell;
+          Word.NextCell;
+          grupo := dm.FDQListTecnicasAlunoNotasGrupo.AsString;
+        end;
+        Word.justifyPara;
+        Word.Insert(dm.FDQListTecnicasAlunoNotastecnica_descricao.AsString);
+        Word.NextCell;
+        // Word.Insert(dm.FDQListTecnicasAlunoNotasexame_nota.AsString);
+        Word.NextCell;
+        dm.FDQListTecnicasAlunoNotas.Next;
+      end;
+
     end;
 
   finally
-    Image1.Free;
+    Image1.Picture.Assign(nil);
   end;
 end;
 

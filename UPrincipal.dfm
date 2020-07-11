@@ -2090,13 +2090,13 @@ object FPrincipal: TFPrincipal
         Caption = '&Aluno'
         OnClick = Aluno1Click
       end
-      object tecnicas1: TMenuItem
-        Caption = '&T'#233'cnicas'
-        OnClick = tecnicas1Click
-      end
       object Grupo1: TMenuItem
         Caption = '&Grupo'
         OnClick = Grupo1Click
+      end
+      object tecnicas1: TMenuItem
+        Caption = '&T'#233'cnicas'
+        OnClick = tecnicas1Click
       end
       object Faixas1: TMenuItem
         Caption = '&Faixas'
@@ -2127,6 +2127,10 @@ object FPrincipal: TFPrincipal
       object ExamedeFaixa1: TMenuItem
         Caption = '&Lancto notas Exame'
         OnClick = ExamedeFaixa1Click
+      end
+      object FInalizaExames1: TMenuItem
+        Caption = 'FInaliza Exames'
+        OnClick = FInalizaExames1Click
       end
     end
   end

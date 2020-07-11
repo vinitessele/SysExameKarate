@@ -237,14 +237,6 @@ inherited FCadExame: TFCadExame
           FieldName = 'Grupo'
           Title.Alignment = taCenter
           Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'examenota'
-          Title.Alignment = taCenter
-          Title.Caption = 'Nota'
-          Width = 51
-          Visible = True
         end>
     end
     object EditDataAlteracao: TEdit

@@ -27,6 +27,7 @@ type
     BindSourceDB2: TBindSourceDB;
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox1Exit(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -54,6 +55,22 @@ begin
   inherited;
   if DM.FDQTecnica.State in [dsEdit, dsInsert] then
     DM.FDQTecnicaGrupo.AsString := DM.FDQGrupogrupo_descricao.AsString;
+end;
+
+procedure TFTecnicas.FormShow(Sender: TObject);
+begin
+  inherited;
+  DM.FDQGrupo.Active := True;
+  DM.FDQGrupo.Close;
+  DM.FDQGrupo.Open();
+
+  {
+    while not DM.FDQGrupo.Eof do
+     begin
+       ComboBox1.Items.Add(DM.FDQGrupogrupo_descricao.AsString);
+       DM.FDQGrupo.Next;
+     end;
+ }
 end;
 
 end.

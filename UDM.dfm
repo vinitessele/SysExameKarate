@@ -6,9 +6,12 @@ object DM: TDM
     Params.Strings = (
       
         'Database=C:\Users\vinic\Documents\Embarcadero\Studio\Projects\Sy' +
-        'sExameKarate\bd\bd.db'
-      'LockingMode=Normal'
-      'DriverID=SQLite')
+        'sExameKarate\bd\BANCO.FDB'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'Protocol=TCPIP'
+      'Server=localhost'
+      'DriverID=FB')
     Connected = True
     LoginPrompt = False
     BeforeConnect = FDConnection1BeforeConnect
@@ -16,8 +19,10 @@ object DM: TDM
     Top = 24
   end
   object FDQAluno: TFDQuery
-    Active = True
     Connection = FDConnection1
+    UpdateOptions.AssignedValues = [uvGeneratorName]
+    UpdateOptions.GeneratorName = 'gen_aluno'
+    UpdateOptions.AutoIncFields = 'aluno_id'
     SQL.Strings = (
       'select * from aluno')
     Left = 24
@@ -73,12 +78,14 @@ object DM: TDM
     end
   end
   object FDQTecnica: TFDQuery
-    Active = True
     BeforeInsert = FDQTecnicaBeforeInsert
     AfterInsert = FDQTecnicaAfterInsert
     BeforeEdit = FDQTecnicaBeforeEdit
     AfterEdit = FDQTecnicaAfterEdit
     Connection = FDConnection1
+    UpdateOptions.AssignedValues = [uvGeneratorName]
+    UpdateOptions.GeneratorName = 'gen_tecnica'
+    UpdateOptions.AutoIncFields = 'tecnica_id'
     SQL.Strings = (
       'select * from tecnica')
     Left = 24
@@ -101,7 +108,6 @@ object DM: TDM
     end
   end
   object FDQGrupo: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from grupo')
@@ -120,7 +126,6 @@ object DM: TDM
     end
   end
   object FDQListTecnicaDescricao: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from tecnica '
@@ -147,7 +152,6 @@ object DM: TDM
     end
   end
   object FDQFaixa: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from faixa')
@@ -168,7 +172,6 @@ object DM: TDM
     end
   end
   object FDQListTecnicaFaixa: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'Select * from faixatecnica ft'
@@ -223,7 +226,6 @@ object DM: TDM
     end
   end
   object FDQListTecnica: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'SELECT * FROM tecnica t'
@@ -258,7 +260,6 @@ object DM: TDM
     end
   end
   object FDQfaixatecnica: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from faixatecnica f'
@@ -289,7 +290,6 @@ object DM: TDM
     end
   end
   object FDQAlunoByNome: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from aluno'
@@ -336,7 +336,6 @@ object DM: TDM
     end
   end
   object FDQExameAluno: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from exame')
@@ -362,7 +361,6 @@ object DM: TDM
     end
   end
   object FDQExameAlunoTecnica: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from exametecnica')
@@ -382,12 +380,6 @@ object DM: TDM
       FieldName = 'exametecnicatecnica_id'
       Origin = 'exametecnicatecnica_id'
     end
-    object FDQExameAlunoTecnicaexame_nota: TBCDField
-      FieldName = 'exame_nota'
-      Origin = 'exame_nota'
-      Precision = 2
-      Size = 2
-    end
     object FDQExameAlunoTecnicaexeme_avaliador: TStringField
       FieldName = 'exeme_avaliador'
       Origin = 'exeme_avaliador'
@@ -398,9 +390,12 @@ object DM: TDM
       Origin = 'Exame_observacao'
       Size = 100
     end
+    object FDQExameAlunoTecnicaEXAME_NOTA: TSingleField
+      FieldName = 'EXAME_NOTA'
+      Origin = 'EXAME_NOTA'
+    end
   end
   object FDQValidaAlunoExame: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from exame '
@@ -441,7 +436,6 @@ object DM: TDM
     end
   end
   object FDQListTecnicasAlunoNotas: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from exametecnica et'
@@ -494,12 +488,6 @@ object DM: TDM
       ReadOnly = True
       Size = 30
     end
-    object FDQListTecnicasAlunoNotasexame_nota: TBCDField
-      FieldName = 'exame_nota'
-      Origin = 'exame_nota'
-      Precision = 2
-      Size = 2
-    end
     object FDQListTecnicasAlunoNotasexeme_avaliador: TStringField
       FieldName = 'exeme_avaliador'
       Origin = 'exeme_avaliador'
@@ -510,23 +498,20 @@ object DM: TDM
       Origin = 'Exame_observacao'
       Size = 100
     end
+    object FDQListTecnicasAlunoNotasEXAME_NOTA: TSingleField
+      FieldName = 'EXAME_NOTA'
+      Origin = 'EXAME_NOTA'
+    end
   end
   object FDQExame: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from exame e '
       'inner join aluno a on a.aluno_id = e.examealuno_id'
-      'where exame_data = :data')
+      'where finalizado is null or finalizado = '#39#39
+      '')
     Left = 224
     Top = 136
-    ParamData = <
-      item
-        Name = 'DATA'
-        DataType = ftDate
-        ParamType = ptInput
-        Value = Null
-      end>
     object FDQExameexame_id: TFDAutoIncField
       FieldName = 'exame_id'
       Origin = 'exame_id'
@@ -594,13 +579,12 @@ object DM: TDM
     end
   end
   object FDQExameNota: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select *'
       'from exametecnica ex '
-      'inner join aluno a on a.aluno_id = e.examealuno_id'
       'inner join exame e  on ex.exame_id = e.exame_id'
+      'inner join aluno a on a.aluno_id = e.examealuno_id'
       'inner join tecnica t on t.tecnica_id=ex.exametecnicatecnica_id'
       'where a.aluno_id = :aluno'
       'and   t.grupo = :grupo'
@@ -620,134 +604,154 @@ object DM: TDM
         ParamType = ptInput
         Value = Null
       end>
-    object FDQExameNotaexametecnica_id: TFDAutoIncField
-      FieldName = 'exametecnica_id'
-      Origin = 'exametecnica_id'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
+    object FDQExameNotaEXAMETECNICA_ID: TIntegerField
+      FieldName = 'EXAMETECNICA_ID'
+      Origin = 'EXAMETECNICA_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
     end
-    object FDQExameNotaexame_id: TIntegerField
-      FieldName = 'exame_id'
-      Origin = 'exame_id'
+    object FDQExameNotaEXAME_ID: TIntegerField
+      FieldName = 'EXAME_ID'
+      Origin = 'EXAME_ID'
     end
-    object FDQExameNotaexametecnicatecnica_id: TIntegerField
-      FieldName = 'exametecnicatecnica_id'
-      Origin = 'exametecnicatecnica_id'
+    object FDQExameNotaEXAMETECNICATECNICA_ID: TIntegerField
+      FieldName = 'EXAMETECNICATECNICA_ID'
+      Origin = 'EXAMETECNICATECNICA_ID'
     end
-    object FDQExameNotaexame_nota: TBCDField
-      FieldName = 'exame_nota'
-      Origin = 'exame_nota'
-      OnValidate = FDQExameNotaexame_notaValidate
-      Precision = 2
-      Size = 2
-    end
-    object FDQExameNotaexeme_avaliador: TStringField
-      FieldName = 'exeme_avaliador'
-      Origin = 'exeme_avaliador'
+    object FDQExameNotaEXEME_AVALIADOR: TStringField
+      FieldName = 'EXEME_AVALIADOR'
+      Origin = 'EXEME_AVALIADOR'
       Size = 30
     end
-    object FDQExameNotaExame_observacao: TStringField
-      FieldName = 'Exame_observacao'
-      Origin = 'Exame_observacao'
+    object FDQExameNotaEXAME_OBSERVACAO: TStringField
+      FieldName = 'EXAME_OBSERVACAO'
+      Origin = 'EXAME_OBSERVACAO'
       Size = 100
     end
-    object FDQExameNotaaluno_id: TIntegerField
+    object FDQExameNotaEXAME_ID_1: TIntegerField
       AutoGenerateValue = arDefault
-      FieldName = 'aluno_id'
-      Origin = 'aluno_id'
+      FieldName = 'EXAME_ID_1'
+      Origin = 'EXAME_ID'
       ProviderFlags = []
       ReadOnly = True
     end
-    object FDQExameNotaaluno_cpf: TStringField
+    object FDQExameNotaEXAMEALUNO_ID: TIntegerField
       AutoGenerateValue = arDefault
-      FieldName = 'aluno_cpf'
-      Origin = 'aluno_cpf'
+      FieldName = 'EXAMEALUNO_ID'
+      Origin = 'EXAMEALUNO_ID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FDQExameNotaEXAME_DATA: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'EXAME_DATA'
+      Origin = 'EXAME_DATA'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FDQExameNotaEXAMEFAIXA_ID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'EXAMEFAIXA_ID'
+      Origin = 'EXAMEFAIXA_ID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FDQExameNotaFINALIZADO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'FINALIZADO'
+      Origin = 'FINALIZADO'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object FDQExameNotaALUNO_ID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'ALUNO_ID'
+      Origin = 'ALUNO_ID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object FDQExameNotaALUNO_CPF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ALUNO_CPF'
+      Origin = 'ALUNO_CPF'
       ProviderFlags = []
       ReadOnly = True
       Size = 11
     end
-    object FDQExameNotaaluno_nome: TStringField
+    object FDQExameNotaALUNO_NOME: TStringField
       AutoGenerateValue = arDefault
-      FieldName = 'aluno_nome'
-      Origin = 'aluno_nome'
+      FieldName = 'ALUNO_NOME'
+      Origin = 'ALUNO_NOME'
       ProviderFlags = []
       ReadOnly = True
       Size = 60
     end
-    object FDQExameNotaaluno_celular: TStringField
+    object FDQExameNotaALUNO_CELULAR: TStringField
       AutoGenerateValue = arDefault
-      FieldName = 'aluno_celular'
-      Origin = 'aluno_celular'
+      FieldName = 'ALUNO_CELULAR'
+      Origin = 'ALUNO_CELULAR'
       ProviderFlags = []
       ReadOnly = True
       Size = 12
     end
-    object FDQExameNotaaluno_email: TStringField
+    object FDQExameNotaALUNO_EMAIL: TStringField
       AutoGenerateValue = arDefault
-      FieldName = 'aluno_email'
-      Origin = 'aluno_email'
+      FieldName = 'ALUNO_EMAIL'
+      Origin = 'ALUNO_EMAIL'
       ProviderFlags = []
       ReadOnly = True
       Size = 100
     end
-    object FDQExameNotaaluno_observacao: TStringField
+    object FDQExameNotaALUNO_OBSERVACAO: TStringField
       AutoGenerateValue = arDefault
-      FieldName = 'aluno_observacao'
-      Origin = 'aluno_observacao'
+      FieldName = 'ALUNO_OBSERVACAO'
+      Origin = 'ALUNO_OBSERVACAO'
       ProviderFlags = []
       ReadOnly = True
       Size = 200
     end
-    object FDQExameNotaexame_id_1: TIntegerField
+    object FDQExameNotaALUNOACADEMIA_ID: TIntegerField
       AutoGenerateValue = arDefault
-      FieldName = 'exame_id_1'
-      Origin = 'exame_id'
+      FieldName = 'ALUNOACADEMIA_ID'
+      Origin = 'ALUNOACADEMIA_ID'
       ProviderFlags = []
       ReadOnly = True
     end
-    object FDQExameNotaexamealuno_id: TIntegerField
+    object FDQExameNotaALUNO_IMG: TBlobField
       AutoGenerateValue = arDefault
-      FieldName = 'examealuno_id'
-      Origin = 'examealuno_id'
+      FieldName = 'ALUNO_IMG'
+      Origin = 'ALUNO_IMG'
       ProviderFlags = []
       ReadOnly = True
     end
-    object FDQExameNotaexame_data: TDateField
+    object FDQExameNotaTECNICA_ID: TIntegerField
       AutoGenerateValue = arDefault
-      FieldName = 'exame_data'
-      Origin = 'exame_data'
+      FieldName = 'TECNICA_ID'
+      Origin = 'TECNICA_ID'
       ProviderFlags = []
       ReadOnly = True
     end
-    object FDQExameNotaexamefaixa_id: TIntegerField
+    object FDQExameNotaTECNICA_DESCRICAO: TStringField
       AutoGenerateValue = arDefault
-      FieldName = 'examefaixa_id'
-      Origin = 'examefaixa_id'
-      ProviderFlags = []
-      ReadOnly = True
-    end
-    object FDQExameNotatecnica_id: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'tecnica_id'
-      Origin = 'tecnica_id'
-      ProviderFlags = []
-      ReadOnly = True
-    end
-    object FDQExameNotatecnica_descricao: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'tecnica_descricao'
-      Origin = 'tecnica_descricao'
+      FieldName = 'TECNICA_DESCRICAO'
+      Origin = 'TECNICA_DESCRICAO'
       ProviderFlags = []
       ReadOnly = True
       Size = 50
     end
-    object FDQExameNotaGrupo: TStringField
+    object FDQExameNotaGRUPO: TStringField
       AutoGenerateValue = arDefault
-      FieldName = 'Grupo'
-      Origin = 'Grupo'
+      FieldName = 'GRUPO'
+      Origin = 'GRUPO'
       ProviderFlags = []
       ReadOnly = True
       Size = 30
+    end
+    object FDQExameNotaEXAME_NOTA: TSingleField
+      FieldName = 'EXAME_NOTA'
+      Origin = 'EXAME_NOTA'
     end
   end
   object FDQMediaExame: TFDQuery
@@ -755,13 +759,14 @@ object DM: TDM
     Connection = FDConnection1
     SQL.Strings = (
       'select ROUND(avg(ex.exame_nota),2) as media'
-      'from exametecnica ex '
+      'from exametecnica ex'
+      'inner join exame e  on ex.exame_id = e.exame_id '
       'inner join aluno a on a.aluno_id = e.examealuno_id'
-      'inner join exame e  on ex.exame_id = e.exame_id'
       'inner join tecnica t on t.tecnica_id=ex.exametecnicatecnica_id'
       'where a.aluno_id = :aluno'
-      'and   t.grupo = :grupo'
-      'and   e.exame_data = :data')
+      'and  t.grupo = :grupo'
+      'and  e.finalizado is null or e.finalizado = '#39#39
+      'and  e.exame_id = :exameid')
     Left = 104
     Top = 264
     ParamData = <
@@ -778,47 +783,46 @@ object DM: TDM
         Value = Null
       end
       item
-        Name = 'DATA'
-        DataType = ftDate
+        Name = 'EXAMEID'
+        DataType = ftInteger
         ParamType = ptInput
-        Value = Null
+        Value = 1
       end>
-    object FDQMediaExamemedia: TWideStringField
+    object FDQMediaExameMEDIA: TFloatField
       AutoGenerateValue = arDefault
-      FieldName = 'media'
-      Origin = 'media'
+      FieldName = 'MEDIA'
+      Origin = 'MEDIA'
       ProviderFlags = []
       ReadOnly = True
-      Size = 32767
     end
   end
   object FDQAcademia: TFDQuery
-    Active = True
     Connection = FDConnection1
+    UpdateOptions.AssignedValues = [uvFetchGeneratorsPoint, uvGeneratorName]
+    UpdateOptions.FetchGeneratorsPoint = gpNone
+    UpdateOptions.GeneratorName = 'gen_academia'
+    UpdateOptions.AutoIncFields = 'academia_id'
     SQL.Strings = (
       'select * from academia')
     Left = 192
     Top = 80
-    object FDQAcademiaacademia_id: TFDAutoIncField
-      DisplayLabel = 'ID'
-      FieldName = 'academia_id'
-      Origin = 'academia_id'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object FDQAcademiaacademia_nome: TStringField
-      DisplayLabel = 'Nome'
-      FieldName = 'academia_nome'
-      Origin = 'academia_nome'
+    object FDQAcademiaACADEMIA_NOME: TStringField
+      FieldName = 'ACADEMIA_NOME'
+      Origin = 'ACADEMIA_NOME'
       Size = 50
     end
-    object FDQAcademiaacademia_logo: TBlobField
-      FieldName = 'academia_logo'
-      Origin = 'academia_logo'
+    object FDQAcademiaACADEMIA_LOGO: TBlobField
+      FieldName = 'ACADEMIA_LOGO'
+      Origin = 'ACADEMIA_LOGO'
+    end
+    object FDQAcademiaACADEMIA_ID: TFDAutoIncField
+      FieldName = 'ACADEMIA_ID'
+      Origin = 'ACADEMIA_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      IdentityInsert = True
     end
   end
   object FDQListaAlunoExame: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from exame e'
@@ -939,13 +943,13 @@ object DM: TDM
     end
   end
   object FDQListTecnicasAlunoMedias: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select avg(exame_nota) media, Grupo from exametecnica et'
       'inner join tecnica t on t.tecnica_id = et.exametecnicatecnica_id'
       'where et.exame_id = :exame'
       'and grupo = :grupo'
+      'group by grupo'
       'order by grupo')
     Left = 392
     Top = 376
@@ -962,22 +966,17 @@ object DM: TDM
         ParamType = ptInput
         Value = Null
       end>
-    object FDQListTecnicasAlunoMediasmedia: TWideStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'media'
-      Origin = 'media'
-      ProviderFlags = []
-      ReadOnly = True
-      Size = 32767
-    end
     object FDQListTecnicasAlunoMediasGrupo: TStringField
       FieldName = 'Grupo'
       Origin = 'Grupo'
       Size = 30
     end
+    object FDQListTecnicasAlunoMediasMEDIA: TFloatField
+      FieldName = 'MEDIA'
+      Origin = 'MEDIA'
+    end
   end
   object FDQListaTecnicaFaixa: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from faixatecnica f'
@@ -996,6 +995,7 @@ object DM: TDM
       FieldName = 'faixatecnica_id'
       Origin = 'faixatecnica_id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object FDQListaTecnicaFaixafaixa_id: TIntegerField
       FieldName = 'faixa_id'
@@ -1036,6 +1036,7 @@ object DM: TDM
       'select * from exame e '
       'inner join aluno a on a.aluno_id = e.examealuno_id'
       'inner join faixa f on e.examefaixa_id = f.faixa_id'
+      'where e.finalizado is null or e.finalizado = '#39#39
       'order by exame_data desc, aluno_nome, faixa_id')
     Left = 544
     Top = 360
@@ -1043,6 +1044,7 @@ object DM: TDM
       FieldName = 'exame_id'
       Origin = 'exame_id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object FDQListExameexamealuno_id: TIntegerField
       FieldName = 'examealuno_id'
@@ -1132,5 +1134,45 @@ object DM: TDM
       ReadOnly = True
       Size = 40
     end
+  end
+  object FDQFinalizaExame: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      
+        'select a.aluno_nome, e.exame_id, e.exame_data, finalizado from e' +
+        'xame e'
+      'inner join exametecnica et on e.exame_id = et.exame_id'
+      'inner join aluno a on a.aluno_id = e.examealuno_id'
+      'inner join tecnica t on t.tecnica_id = et.exametecnicatecnica_id'
+      'group by a.aluno_nome, e.exame_id, e.exame_data, finalizado'
+      'order by e.exame_data desc')
+    Left = 200
+    Top = 200
+    object FDQFinalizaExamealuno_nome: TStringField
+      FieldName = 'aluno_nome'
+      Origin = 'aluno_nome'
+      Size = 60
+    end
+    object FDQFinalizaExameexame_id: TFDAutoIncField
+      FieldName = 'exame_id'
+      Origin = 'exame_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object FDQFinalizaExameexame_data: TDateField
+      FieldName = 'exame_data'
+      Origin = 'exame_data'
+    end
+    object FDQFinalizaExamefinalizado: TStringField
+      FieldName = 'finalizado'
+      Origin = 'finalizado'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object FDPhysFBDriverLink1: TFDPhysFBDriverLink
+    VendorLib = 'C:\Windows\System32\GDS32.DLL'
+    Left = 408
+    Top = 40
   end
 end

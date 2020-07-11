@@ -54,43 +54,14 @@ implementation
 uses UDM;
 
 procedure TFExame.btnCarregarClick(Sender: TObject);
-var
-  lb: TLabel;
-  campo: TEdit;
-  i: Integer;
 begin
   dm.FDQExameNota.Active := True;
   dm.FDQExameNota.Close;
   dm.FDQExameNota.ParamByName('aluno').AsInteger :=
     dm.FDQExamealuno_id.AsInteger;
-//  dm.FDQExameNota.ParamByName('data').AsDate := Date;
   dm.FDQExameNota.ParamByName('grupo').AsString :=
     dm.FDQGrupogrupo_descricao.AsString;
   dm.FDQExameNota.Open();
-
-  (*
-    dm.FDQExameNota.First;
-    i := 100;
-
-    while not dm.FDQExameNota.Eof do
-    begin
-    lb := TLabel.Create(Self);
-    campo := TEdit.Create(Self);
-    lb.top := i;
-    campo.top := i;
-    lb.left := 20;
-    campo.left := 180;
-    lb.Parent := TFExame(Self);
-    campo.Parent := TFExame(Self);
-    campo.Name := 'edit_' + dm.FDQExameNotatecnica_id.AsString;
-    campo.Width := 60;
-    campo.Text := EmptyStr;
-    lb.Caption := dm.FDQExameNotatecnica_descricao.AsString;
-    lb.Name := 'labeletecnica' + dm.FDQExameNotatecnica_id.AsString;
-    i := i + 20;
-    dm.FDQExameNota.Next;
-    end;
-  *)
 
 end;
 
@@ -114,7 +85,7 @@ begin
   dm.FDQMediaExame.Close;
   dm.FDQMediaExame.ParamByName('aluno').AsInteger :=
     dm.FDQExamealuno_id.AsInteger;
-  dm.FDQMediaExame.ParamByName('data').AsDate := Date;
+  dm.FDQMediaExame.ParamByName('exameid').AsInteger := DM.FDQExameNotaEXAME_ID.AsInteger;
   dm.FDQMediaExame.ParamByName('grupo').AsString :=
     dm.FDQGrupogrupo_descricao.AsString;
   dm.FDQMediaExame.Open();
@@ -132,8 +103,8 @@ procedure TFExame.FormShow(Sender: TObject);
 begin
   dm.FDQExame.Active := True;
   dm.FDQExame.Close;
-  dm.FDQExame.ParamByName('data').AsDate := Date;
   dm.FDQExame.Open();
+  dm.FDQGrupo.Active := True;
   Label1.Caption := 'Data :' + DateToStr(Date)
 end;
 

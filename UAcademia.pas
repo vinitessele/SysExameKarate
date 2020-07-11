@@ -44,17 +44,19 @@ begin
   inherited;
   If OpenPictureDialog1.Execute Then
   begin
-    DBImage1.Picture.LoadFromFile(OpenPictureDialog1.FileName);
-    DBImage1.Stretch:=True;
+    DBImage1.picture.LoadFromFile(OpenPictureDialog1.FileName);
+    DBImage1.Stretch := True;
   end;
 end;
 
 procedure TFAcademia.FormShow(Sender: TObject);
+var
+  caminho: string;
 begin
   inherited;
-dm.FDQAcademia.Active:=True;
-dm.FDQAcademia.Close;
-dm.FDQAcademia.Open();
+  dm.FDQAcademia.Active := True;
+  dm.FDQAcademia.Close;
+  dm.FDQAcademia.Open();
 end;
 
 end.

@@ -182,12 +182,10 @@ inherited FAluno: TFAluno
     Top = 291
     Width = 145
     Height = 21
-    ItemIndex = 0
     TabOrder = 9
     Text = 'Dojo Tessele'
     Items.Strings = (
-      'Dojo Tessele'
-      'Aguas Claras')
+      '')
   end
   object DBImage2: TDBImage
     Left = 544
@@ -246,8 +244,8 @@ inherited FAluno: TFAluno
       Control = ComboBox1
       Track = True
       FillDataSource = BindSourceDB1
-      FillValueFieldName = 'academia_id'
-      FillDisplayFieldName = 'academia_nome'
+      FillValueFieldName = 'ACADEMIA_ID'
+      FillDisplayFieldName = 'ACADEMIA_NOME'
       AutoFill = True
       FillExpressions = <>
       FillHeaderExpressions = <>

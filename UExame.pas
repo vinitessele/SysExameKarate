@@ -153,8 +153,20 @@ end;
 procedure TFCadExame.FormShow(Sender: TObject);
 begin
   inherited;
+  dm.FDQFaixa.Active := True;
   EditData.Text := DateToStr(Date);
   FListaExames.ShowModal;
+  if nomealuno <> EmptyStr then
+  begin
+    dm.FDQAlunoByNome.Active := True;
+    dm.FDQAlunoByNome.Close;
+    dm.FDQAlunoByNome.ParamByName('aluno').AsString := nomealuno;
+    dm.FDQAlunoByNome.Open();
+    EditNome.Text := dm.FDQAlunoByNomealuno_nome.AsString;
+    dm.FDQFaixa.Active := True;
+    dm.FDQFaixa.Locate('faixa_id', dm.FDQListExamefaixa_id.AsInteger, []);
+  end;
+
 end;
 
 end.

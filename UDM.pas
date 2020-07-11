@@ -8,7 +8,8 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.SQLite,
   FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs, FireDAC.VCLUI.Wait, Data.DB,
   FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
-  FireDAC.DApt, FireDAC.Comp.DataSet, IniFiles, System.IOUtils;
+  FireDAC.DApt, FireDAC.Comp.DataSet, IniFiles, System.IOUtils, FireDAC.Phys.FB,
+  FireDAC.Phys.FBDef, FireDAC.Phys.IBBase;
 
 type
   TDM = class(TDataModule)
@@ -88,37 +89,12 @@ type
     FDQExameAlunoTecnicaexametecnica_id: TFDAutoIncField;
     FDQExameAlunoTecnicaexame_id: TIntegerField;
     FDQExameAlunoTecnicaexametecnicatecnica_id: TIntegerField;
-    FDQExameAlunoTecnicaexame_nota: TBCDField;
     FDQExameAlunoTecnicaexeme_avaliador: TStringField;
     FDQExameAlunoTecnicaExame_observacao: TStringField;
-    FDQListTecnicasAlunoNotasexame_nota: TBCDField;
     FDQListTecnicasAlunoNotasexeme_avaliador: TStringField;
     FDQListTecnicasAlunoNotasExame_observacao: TStringField;
-    FDQExameNotaexametecnica_id: TFDAutoIncField;
-    FDQExameNotaexame_id: TIntegerField;
-    FDQExameNotaexametecnicatecnica_id: TIntegerField;
-    FDQExameNotaexame_nota: TBCDField;
-    FDQExameNotaexeme_avaliador: TStringField;
-    FDQExameNotaExame_observacao: TStringField;
-    FDQExameNotaaluno_id: TIntegerField;
-    FDQExameNotaaluno_cpf: TStringField;
-    FDQExameNotaaluno_nome: TStringField;
-    FDQExameNotaaluno_celular: TStringField;
-    FDQExameNotaaluno_email: TStringField;
-    FDQExameNotaaluno_observacao: TStringField;
-    FDQExameNotaexame_id_1: TIntegerField;
-    FDQExameNotaexamealuno_id: TIntegerField;
-    FDQExameNotaexame_data: TDateField;
-    FDQExameNotaexamefaixa_id: TIntegerField;
-    FDQExameNotatecnica_id: TIntegerField;
-    FDQExameNotatecnica_descricao: TStringField;
-    FDQExameNotaGrupo: TStringField;
     FDQMediaExame: TFDQuery;
-    FDQMediaExamemedia: TWideStringField;
     FDQAcademia: TFDQuery;
-    FDQAcademiaacademia_id: TFDAutoIncField;
-    FDQAcademiaacademia_nome: TStringField;
-    FDQAcademiaacademia_logo: TBlobField;
     FDQAlunoalunoacademia_id: TIntegerField;
     FDQAlunoAcademia: TStringField;
     FDQAlunoaluno_img: TBlobField;
@@ -138,7 +114,6 @@ type
     FDQListaAlunoExamefaixa_id: TIntegerField;
     FDQListaAlunoExamefaixa_descricao: TStringField;
     FDQListTecnicasAlunoMedias: TFDQuery;
-    FDQListTecnicasAlunoMediasmedia: TWideStringField;
     FDQListTecnicasAlunoMediasGrupo: TStringField;
     FDQListaAlunoExameacademia_nome: TStringField;
     FDQListaAlunoExameacademia_logo: TBlobField;
@@ -165,6 +140,41 @@ type
     FDQListExamealuno_img: TBlobField;
     FDQListExamefaixa_id: TIntegerField;
     FDQListExamefaixa_descricao: TStringField;
+    FDQFinalizaExame: TFDQuery;
+    FDQFinalizaExamealuno_nome: TStringField;
+    FDQFinalizaExameexame_id: TFDAutoIncField;
+    FDQFinalizaExameexame_data: TDateField;
+    FDQFinalizaExamefinalizado: TStringField;
+    FDPhysFBDriverLink1: TFDPhysFBDriverLink;
+    FDQExameNotaEXAMETECNICA_ID: TIntegerField;
+    FDQExameNotaEXAME_ID: TIntegerField;
+    FDQExameNotaEXAMETECNICATECNICA_ID: TIntegerField;
+    FDQExameNotaEXEME_AVALIADOR: TStringField;
+    FDQExameNotaEXAME_OBSERVACAO: TStringField;
+    FDQExameNotaEXAME_ID_1: TIntegerField;
+    FDQExameNotaEXAMEALUNO_ID: TIntegerField;
+    FDQExameNotaEXAME_DATA: TDateField;
+    FDQExameNotaEXAMEFAIXA_ID: TIntegerField;
+    FDQExameNotaFINALIZADO: TStringField;
+    FDQExameNotaALUNO_ID: TIntegerField;
+    FDQExameNotaALUNO_CPF: TStringField;
+    FDQExameNotaALUNO_NOME: TStringField;
+    FDQExameNotaALUNO_CELULAR: TStringField;
+    FDQExameNotaALUNO_EMAIL: TStringField;
+    FDQExameNotaALUNO_OBSERVACAO: TStringField;
+    FDQExameNotaALUNOACADEMIA_ID: TIntegerField;
+    FDQExameNotaALUNO_IMG: TBlobField;
+    FDQExameNotaTECNICA_ID: TIntegerField;
+    FDQExameNotaTECNICA_DESCRICAO: TStringField;
+    FDQExameNotaGRUPO: TStringField;
+    FDQAcademiaACADEMIA_NOME: TStringField;
+    FDQAcademiaACADEMIA_LOGO: TBlobField;
+    FDQAcademiaACADEMIA_ID: TFDAutoIncField;
+    FDQExameNotaEXAME_NOTA: TSingleField;
+    FDQListTecnicasAlunoNotasEXAME_NOTA: TSingleField;
+    FDQExameAlunoTecnicaEXAME_NOTA: TSingleField;
+    FDQMediaExameMEDIA: TFloatField;
+    FDQListTecnicasAlunoMediasMEDIA: TFloatField;
     procedure FDQTecnicaBeforeInsert(DataSet: TDataSet);
     procedure FDQTecnicaBeforeEdit(DataSet: TDataSet);
     procedure FDQTecnicaAfterInsert(DataSet: TDataSet);

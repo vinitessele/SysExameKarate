@@ -95,6 +95,7 @@ end;
 procedure TFFaixaTecnica.FormShow(Sender: TObject);
 begin
   inherited;
+  DM.fdqfaixatecnica.Active := True;
   CarregarListaTecnicas;
   CarregarFaixaTecnica
 end;

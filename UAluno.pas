@@ -74,8 +74,7 @@ procedure TFAluno.FormShow(Sender: TObject);
 begin
   inherited;
   dm.FDQAcademia.Active := True;
-  dm.FDQAcademia.Close;
-  dm.FDQAcademia.Open();
+  dm.FDQAluno.Active := True;
 end;
 
 end.

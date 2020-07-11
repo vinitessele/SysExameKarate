@@ -1,5 +1,6 @@
 inherited FTecnicas: TFTecnicas
   Caption = 'T'#233'cnicas'
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel [0]
@@ -90,14 +91,10 @@ inherited FTecnicas: TFTecnicas
     Top = 120
     Width = 145
     Height = 21
-    ItemIndex = 0
     TabOrder = 5
     Text = 'Kata'
     Items.Strings = (
-      'Kata'
-      'Kihon'
-      'Kumite'
-      'Outros requisitos')
+      '')
   end
   object DataSource1: TDataSource
     DataSet = DM.FDQTecnica

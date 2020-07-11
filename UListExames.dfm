@@ -28,6 +28,13 @@ object FListaExames: TFListaExames
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object Label2: TLabel
+    Left = 12
+    Top = 363
+    Width = 158
+    Height = 13
+    Caption = '^2 cliques para acessar o exame'
+  end
   object DBGrid1: TDBGrid
     Left = 12
     Top = 44
@@ -41,6 +48,7 @@ object FListaExames: TFListaExames
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnDblClick = DBGrid1DblClick
     Columns = <
       item
         Alignment = taCenter
@@ -84,6 +92,15 @@ object FListaExames: TFListaExames
     Caption = '&Fechar'
     TabOrder = 1
     OnClick = btnFecharClick
+  end
+  object btnExcluir: TBitBtn
+    Left = 568
+    Top = 363
+    Width = 114
+    Height = 32
+    Caption = '&Excluir exame'
+    TabOrder = 2
+    OnClick = btnExcluirClick
   end
   object DataSource1: TDataSource
     DataSet = DM.FDQListExame

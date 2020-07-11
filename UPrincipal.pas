@@ -27,6 +27,7 @@ type
     Impresso1: TMenuItem;
     Resumosomentemdias1: TMenuItem;
     ExamedeFaixa1: TMenuItem;
+    FInalizaExames1: TMenuItem;
     procedure Aluno1Click(Sender: TObject);
     procedure tecnicas1Click(Sender: TObject);
     procedure Grupo1Click(Sender: TObject);
@@ -37,6 +38,7 @@ type
     procedure Academia1Click(Sender: TObject);
     procedure ExamedeFaixa1Click(Sender: TObject);
     procedure Resumosomentemdias1Click(Sender: TObject);
+    procedure FInalizaExames1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,7 +53,7 @@ implementation
 {$R *.dfm}
 
 uses UDM, UAluno, UTecnica, UGrupo, UFaixa, UFaixaTecnica, UExame, UExameFaixa,
-  UConfiguracao, UAcademia, UPesquisa, UResumo;
+  UConfiguracao, UAcademia, UPesquisa, UResumo, UFinalizaExames, UListExames;
 
 procedure TFPrincipal.Academia1Click(Sender: TObject);
 begin
@@ -86,6 +88,11 @@ end;
 procedure TFPrincipal.FaixasxTcnicas1Click(Sender: TObject);
 begin
   FFaixaTecnica.ShowModal;
+end;
+
+procedure TFPrincipal.FInalizaExames1Click(Sender: TObject);
+begin
+  FFinalizar.ShowModal;
 end;
 
 procedure TFPrincipal.Grupo1Click(Sender: TObject);

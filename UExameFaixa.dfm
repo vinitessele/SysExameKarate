@@ -827,6 +827,7 @@ object FExame: TFExame
       Width = 233
       Height = 21
       TabOrder = 0
+      Text = 'Vinicius Tessele'
     end
     object EditAvaliador: TEdit
       Left = 255
@@ -843,14 +844,8 @@ object FExame: TFExame
       Top = 40
       Width = 154
       Height = 21
-      ItemIndex = 0
       TabOrder = 2
       Text = 'Kata'
-      Items.Strings = (
-        'Kata'
-        'Kihon'
-        'Kumite'
-        'Outros requisitos')
     end
   end
   object StatusBar1: TStatusBar
@@ -893,7 +888,7 @@ object FExame: TFExame
     Columns = <
       item
         Expanded = False
-        FieldName = 'tecnica_descricao'
+        FieldName = 'TECNICA_DESCRICAO'
         Title.Alignment = taCenter
         Title.Caption = 'T'#233'cnica'
         Width = 302
@@ -902,15 +897,16 @@ object FExame: TFExame
       item
         Alignment = taCenter
         Expanded = False
-        FieldName = 'Grupo'
+        FieldName = 'GRUPO'
         Title.Alignment = taCenter
+        Title.Caption = 'Grupo'
         Width = 131
         Visible = True
       end
       item
         Alignment = taCenter
         Expanded = False
-        FieldName = 'exame_nota'
+        FieldName = 'EXAME_NOTA'
         Title.Alignment = taCenter
         Title.Caption = 'Nota'
         Width = 109
@@ -918,7 +914,7 @@ object FExame: TFExame
       end
       item
         Expanded = False
-        FieldName = 'Exame_observacao'
+        FieldName = 'EXAME_OBSERVACAO'
         Title.Alignment = taCenter
         Title.Caption = 'Observa'#231#227'o'
         Width = 229
@@ -967,14 +963,13 @@ object FExame: TFExame
   object BindSourceDB1: TBindSourceDB
     DataSet = DM.FDQExame
     ScopeMappings = <>
-    Left = 520
-    Top = 24
+    Left = 528
   end
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
-    Left = 564
-    Top = 45
+    Left = 580
+    Top = 65533
     object LinkListControlToField1: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB1
@@ -997,8 +992,8 @@ object FExame: TFExame
   object BindSourceDB2: TBindSourceDB
     DataSet = DM.FDQGrupo
     ScopeMappings = <>
-    Left = 440
-    Top = 24
+    Left = 472
+    Top = 8
   end
   object DataSource1: TDataSource
     DataSet = DM.FDQExameNota

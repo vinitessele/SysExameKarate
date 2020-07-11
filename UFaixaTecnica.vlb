@@ -89,7 +89,7 @@ Coordinates=136,10,141,339
 Coordinates=881,740,141,33
 
 [DM.FDQExameNota]
-Coordinates=10,10,116,393
+Coordinates=10,10,148,447
 
 [DM.FDQListTecnicasAlunoMedias]
 Coordinates=366,582,181,87
@@ -124,4 +124,16 @@ Coordinates=940,270,92,105
 
 [BindingsList1]
 Coordinates=145,368,82,33
+
+[DM.FDQListExame]
+Coordinates=177,368,106,303
+
+[DM.FDQListaTecnicaFaixa]
+Coordinates=580,242,143,159
+
+[DataSource2]
+Coordinates=56,476,77,33
+
+[DM.FDQFinalizaExame]
+Coordinates=415,242,125,123
 

@@ -1,43 +1,43 @@
 ﻿[DBGrid1]
-Coordinates=82,212,56,33
+Coordinates=1140,966,56,33
 Visible=True
 
 [Label2]
-Coordinates=209,10,46,51
+Coordinates=806,966,46,51
 
 [StatusBar1]
-Coordinates=121,10,68,51
+Coordinates=388,966,68,51
 
 [PanelTooBar]
-Coordinates=177,144,77,51
+Coordinates=492,966,77,51
 
 [DBEdit2]
-Coordinates=10,212,54,33
+Coordinates=964,966,54,33
 
 [DBEdit1]
-Coordinates=276,144,54,33
+Coordinates=1052,966,54,33
 
 [Label1]
-Coordinates=114,144,46,51
+Coordinates=885,966,46,51
 
 [DataSource1]
 Coordinates=94,77,77,33
 
 [DBNavigator1]
-Coordinates=10,144,82,51
+Coordinates=607,966,82,51
 
 [Label3]
-Coordinates=272,10,46,51
+Coordinates=727,966,46,51
 
 []
 Coordinates=940,150,92,123
 Visible=True
 
 [DM.FDQListTecnicaDescricao]
-Coordinates=420,154,160,87
+Coordinates=10,966,160,87
 
 [DM.FDQAluno]
-Coordinates=320,270,90,213
+Coordinates=918,10,90,213
 
 [DM.FDQTecnica]
 Coordinates=940,160,93,33
@@ -48,43 +48,43 @@ Coordinates=197,233,85,33
 Visible=False
 
 [BindSourceDB1]
-Coordinates=1190,140,92,123
+Coordinates=953,582,92,123
 
 [BindingsList1]
 Coordinates=227,80,82,33
 
 [DM.FDQExame]
-Coordinates=0,320,90,231
+Coordinates=555,10,90,231
 
 [DM.FDQListTecnicaFisico]
 Coordinates=441,484,141,105
 
 [DM.FDQfaixatecnica]
-Coordinates=441,1,113,105
+Coordinates=1085,578,113,123
 
 [DM.FDQListTecnicasAlunoNotas]
-Coordinates=101,660,175,213
+Coordinates=689,10,175,213
 
 [DM.FDQExameAluno]
-Coordinates=13,165,117,123
+Coordinates=209,794,117,123
 
 [DM.FDQListTecnicasAlunoMedias]
-Coordinates=210,10,181,87
+Coordinates=851,794,181,87
 
 [DM.FDQListTecnicaOutros]
 Coordinates=645,903,145,105
 
 [DM.FDQExameNota]
-Coordinates=160,210,116,393
+Coordinates=10,10,148,447
 
 [DM.FDQMediaExame]
-Coordinates=337,1075,117,69
+Coordinates=223,966,117,69
 
 [DM.FDQListTecnicaFaixa]
-Coordinates=645,551,137,159
+Coordinates=1052,10,137,159
 
 [DM.FDQFaixa]
-Coordinates=740,10,81,87
+Coordinates=1088,794,81,87
 
 [DM.FDQListTecnicaKihon]
 Coordinates=645,408,140,105
@@ -93,30 +93,42 @@ Coordinates=645,408,140,105
 Coordinates=645,122,142,105
 
 [DM.FDQValidaAlunoExame]
-Coordinates=830,320,147,123
+Coordinates=10,794,147,123
 
 [DM.FDQAcademia]
-Coordinates=645,760,103,105
+Coordinates=547,794,103,105
 
 [DM.FDQListTecnicaKumite]
 Coordinates=645,265,146,105
 
 [DM.FDQAlunoByNome]
-Coordinates=441,275,125,159
+Coordinates=205,578,125,159
 
 [DM.FDQListaAlunoExame]
-Coordinates=310,627,141,339
+Coordinates=213,10,141,339
 
 [DM.FDQListTecnicaKata]
 Coordinates=486,1075,133,105
 
 [DM.FDQExameAlunoTecnica]
-Coordinates=645,1046,155,159
+Coordinates=378,578,155,159
 
 [ComboBox1]
-Coordinates=1070,140,84,105
+Coordinates=772,589,84,105
 Visible=True
 
 [BindSourceDB2]
-Coordinates=940,160,92,123
+Coordinates=586,578,92,123
+
+[DM.FDQListTecnica]
+Coordinates=695,794,111,105
+
+[DM.FDQFinalizaExame]
+Coordinates=372,794,125,123
+
+[DM.FDQListExame]
+Coordinates=404,10,106,303
+
+[DM.FDQListaTecnicaFaixa]
+Coordinates=10,578,143,159
 
