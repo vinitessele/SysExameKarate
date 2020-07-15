@@ -208,7 +208,7 @@ begin
   caminho := ArqIni.ReadString('SERVIDOR', 'Database', 'Erro ao ler o valor');
   ArqIni.Free;
   strPath := System.IOUtils.TPath.Combine(System.IOUtils.TPath.GetDocumentsPath,
-    caminho + 'Bd.db');
+    caminho + 'BANCO.FDB');
 {$IFDEF RELEASE}
   FDConnection1.Params.Values['DATABASE'] := strPath;
 {$ELSE}

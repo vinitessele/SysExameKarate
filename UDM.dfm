@@ -19,6 +19,7 @@ object DM: TDM
     Top = 24
   end
   object FDQAluno: TFDQuery
+    Active = True
     Connection = FDConnection1
     UpdateOptions.AssignedValues = [uvGeneratorName]
     UpdateOptions.GeneratorName = 'gen_aluno'
@@ -78,6 +79,7 @@ object DM: TDM
     end
   end
   object FDQTecnica: TFDQuery
+    Active = True
     BeforeInsert = FDQTecnicaBeforeInsert
     AfterInsert = FDQTecnicaAfterInsert
     BeforeEdit = FDQTecnicaBeforeEdit
@@ -108,6 +110,7 @@ object DM: TDM
     end
   end
   object FDQGrupo: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from grupo')
@@ -126,6 +129,7 @@ object DM: TDM
     end
   end
   object FDQListTecnicaDescricao: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from tecnica '
@@ -152,6 +156,7 @@ object DM: TDM
     end
   end
   object FDQFaixa: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from faixa')
@@ -172,6 +177,7 @@ object DM: TDM
     end
   end
   object FDQListTecnicaFaixa: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'Select * from faixatecnica ft'
@@ -226,6 +232,7 @@ object DM: TDM
     end
   end
   object FDQListTecnica: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'SELECT * FROM tecnica t'
@@ -260,6 +267,7 @@ object DM: TDM
     end
   end
   object FDQfaixatecnica: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from faixatecnica f'
@@ -290,6 +298,7 @@ object DM: TDM
     end
   end
   object FDQAlunoByNome: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from aluno'
@@ -336,6 +345,7 @@ object DM: TDM
     end
   end
   object FDQExameAluno: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from exame')
@@ -361,6 +371,7 @@ object DM: TDM
     end
   end
   object FDQExameAlunoTecnica: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from exametecnica')
@@ -396,6 +407,7 @@ object DM: TDM
     end
   end
   object FDQValidaAlunoExame: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from exame '
@@ -436,6 +448,7 @@ object DM: TDM
     end
   end
   object FDQListTecnicasAlunoNotas: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from exametecnica et'
@@ -504,6 +517,7 @@ object DM: TDM
     end
   end
   object FDQExame: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from exame e '
@@ -579,6 +593,7 @@ object DM: TDM
     end
   end
   object FDQExameNota: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select *'
@@ -797,6 +812,7 @@ object DM: TDM
     end
   end
   object FDQAcademia: TFDQuery
+    Active = True
     Connection = FDConnection1
     UpdateOptions.AssignedValues = [uvFetchGeneratorsPoint, uvGeneratorName]
     UpdateOptions.FetchGeneratorsPoint = gpNone
@@ -823,6 +839,7 @@ object DM: TDM
     end
   end
   object FDQListaAlunoExame: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from exame e'
@@ -943,6 +960,7 @@ object DM: TDM
     end
   end
   object FDQListTecnicasAlunoMedias: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select avg(exame_nota) media, Grupo from exametecnica et'
@@ -977,6 +995,7 @@ object DM: TDM
     end
   end
   object FDQListaTecnicaFaixa: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from faixatecnica f'
@@ -1136,6 +1155,7 @@ object DM: TDM
     end
   end
   object FDQFinalizaExame: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       

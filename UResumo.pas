@@ -123,25 +123,25 @@ begin
     Word.AppShow;
     Word.Appmaximize;
     // 1, coluna, linha
-    // Word.TableInsertTable(1, 2, 1);
-    // Word.centerPara;
-    // Word.TableSelectTable; // seleciona a tabela inteira
-    // Word.TableAutoFormat(Format := 1);
+    Word.TableInsertTable(1, 2, 1);
+    Word.centerPara;
+    Word.TableSelectTable; // seleciona a tabela inteira
+    Word.TableAutoFormat(Format := 1);
     // usa a auto formatacao de tabelas do Word a vigesima para ser exato muda forma da tabela max 30
-    // Word.startOfRow; // coloca o cursor piscando no comeco da linha
+    Word.startOfRow; // coloca o cursor piscando no comeco da linha
     Word.LeftPara;
     Word.Insertpicture(caminho);
-    // Word.Insert(#13);
+    Word.Insert(#13);
 
     // Resumo
 
     if RadioGroup1.ItemIndex = 0 then
     begin
-      Word.LeftPara;
-      Word.Insertpicture(caminho);
-      // Word.NextCell;
+      // Word.LeftPara;
+      // Word.Insertpicture(caminho);
+      Word.NextCell;
       Word.bold; // coloca negrito
-      // Word.centerPara;
+      Word.centerPara;
       Word.Insert('Ficha de Exame médias');
       Word.Insert(#32 + dm.FDQListaAlunoExameexame_data.AsString);
       Word.bold(false); // tira o negrito
@@ -165,7 +165,7 @@ begin
           dm.FDQGrupogrupo_descricao.AsString;
         dm.FDQListTecnicasAlunoMedias.Open();
 
-        // Word.NextCell;
+        Word.NextCell;
         Word.justifyPara; // coloca o texto no esquerda
         Word.bold(false); // tira o negrito
         Word.FontSize(10);
