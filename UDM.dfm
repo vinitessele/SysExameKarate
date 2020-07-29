@@ -1192,7 +1192,168 @@ object DM: TDM
   end
   object FDPhysFBDriverLink1: TFDPhysFBDriverLink
     VendorLib = 'C:\Windows\System32\GDS32.DLL'
-    Left = 408
+    Left = 568
     Top = 40
+  end
+  object FDQAvKata: TFDQuery
+    Active = True
+    Connection = FDConnection1
+    UpdateOptions.AssignedValues = [uvGeneratorName]
+    UpdateOptions.GeneratorName = 'gen_avaliacaokata'
+    UpdateOptions.AutoIncFields = 'ID'
+    SQL.Strings = (
+      'select * from avaliacaokata')
+    Left = 296
+    Top = 80
+    object FDQAvKataID: TIntegerField
+      AutoGenerateValue = arAutoInc
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object FDQAvKataID_TECNICA: TIntegerField
+      FieldName = 'ID_TECNICA'
+      Origin = 'ID_TECNICA'
+      Required = True
+    end
+    object FDQAvKataID_ALUNO: TIntegerField
+      FieldName = 'ID_ALUNO'
+      Origin = 'ID_ALUNO'
+      Required = True
+    end
+    object FDQAvKataPOSICAO: TSingleField
+      FieldName = 'POSICAO'
+      Origin = 'POSICAO'
+    end
+    object FDQAvKataTECNICAS: TSingleField
+      FieldName = 'TECNICAS'
+      Origin = 'TECNICAS'
+    end
+    object FDQAvKataRITMO: TSingleField
+      FieldName = 'RITMO'
+      Origin = 'RITMO'
+    end
+    object FDQAvKataVISAO: TSingleField
+      FieldName = 'VISAO'
+      Origin = 'VISAO'
+    end
+    object FDQAvKataKIME: TSingleField
+      FieldName = 'KIME'
+      Origin = 'KIME'
+    end
+    object FDQAvKataDISPOSICAO: TSingleField
+      FieldName = 'DISPOSICAO'
+      Origin = 'DISPOSICAO'
+    end
+    object FDQAvKataZANCHIN: TSingleField
+      FieldName = 'ZANCHIN'
+      Origin = 'ZANCHIN'
+    end
+    object FDQAvKataID_EXAME: TIntegerField
+      FieldName = 'ID_EXAME'
+      Origin = 'ID_EXAME'
+    end
+  end
+  object FDQKumite: TFDQuery
+    Active = True
+    Connection = FDConnection1
+    UpdateOptions.AssignedValues = [uvGeneratorName]
+    UpdateOptions.GeneratorName = 'gen_kumite'
+    UpdateOptions.AutoIncFields = 'id'
+    SQL.Strings = (
+      'select * from kumite')
+    Left = 192
+    Top = 256
+    object FDQKumiteID: TIntegerField
+      AutoGenerateValue = arAutoInc
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object FDQKumiteID_TECNICA: TIntegerField
+      FieldName = 'ID_TECNICA'
+      Origin = 'ID_TECNICA'
+      Required = True
+    end
+    object FDQKumiteID_ALUNO: TIntegerField
+      FieldName = 'ID_ALUNO'
+      Origin = 'ID_ALUNO'
+      Required = True
+    end
+    object FDQKumiteID_EXAME: TIntegerField
+      FieldName = 'ID_EXAME'
+      Origin = 'ID_EXAME'
+      Required = True
+    end
+    object FDQKumitePOSICAO: TSingleField
+      DisplayLabel = 'Posi'#231#227'o'
+      FieldName = 'POSICAO'
+      Origin = 'POSICAO'
+    end
+    object FDQKumiteTECNICAS: TSingleField
+      DisplayLabel = 'T'#233'cnicas'
+      FieldName = 'TECNICAS'
+      Origin = 'TECNICAS'
+    end
+    object FDQKumiteDISTBASE: TSingleField
+      DisplayLabel = 'Dist'#226'ncia Base'
+      FieldName = 'DISTBASE'
+      Origin = 'DISTBASE'
+    end
+    object FDQKumiteDISTGOLPE: TSingleField
+      DisplayLabel = 'Dist'#226'ncia golpe'
+      FieldName = 'DISTGOLPE'
+      Origin = 'DISTGOLPE'
+    end
+    object FDQKumiteATAQUE: TSingleField
+      DisplayLabel = 'Ataque'
+      FieldName = 'ATAQUE'
+      Origin = 'ATAQUE'
+    end
+    object FDQKumiteDIRECAO: TSingleField
+      DisplayLabel = 'Dire'#231#227'o'
+      FieldName = 'DIRECAO'
+      Origin = 'DIRECAO'
+    end
+    object FDQKumiteKYO: TSingleField
+      DisplayLabel = 'Explorou o Kyo'
+      FieldName = 'KYO'
+      Origin = 'KYO'
+    end
+    object FDQKumiteJITSU: TSingleField
+      DisplayLabel = 'Manteve-se em Jitsu'
+      FieldName = 'JITSU'
+      Origin = 'JITSU'
+    end
+    object FDQKumiteDEFESA: TSingleField
+      DisplayLabel = 'Defesa'
+      FieldName = 'DEFESA'
+      Origin = 'DEFESA'
+    end
+    object FDQKumiteCONTRAATAQUE: TSingleField
+      DisplayLabel = 'Contra ataque'
+      FieldName = 'CONTRAATAQUE'
+      Origin = 'CONTRAATAQUE'
+    end
+    object FDQKumiteVISAO: TSingleField
+      DisplayLabel = 'Vis'#227'o'
+      FieldName = 'VISAO'
+      Origin = 'VISAO'
+    end
+    object FDQKumiteKIME: TSingleField
+      DisplayLabel = 'Kime'
+      FieldName = 'KIME'
+      Origin = 'KIME'
+    end
+    object FDQKumiteDISPOSICAO: TSingleField
+      DisplayLabel = 'Disposi'#231#227'o'
+      FieldName = 'DISPOSICAO'
+      Origin = 'DISPOSICAO'
+    end
+    object FDQKumiteZANCHIN: TSingleField
+      DisplayLabel = 'Zanchin'
+      FieldName = 'ZANCHIN'
+      Origin = 'ZANCHIN'
+    end
   end
 end

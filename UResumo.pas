@@ -236,9 +236,72 @@ begin
         Word.Insert(dm.FDQListTecnicasAlunoNotastecnica_descricao.AsString);
         Word.NextCell;
         Word.Insert(dm.FDQListTecnicasAlunoNotasexame_nota.AsString);
+
+        if dm.FDQListTecnicasAlunoNotasGrupo.AsString = 'Kata' then
+        begin
+          dm.FDQAvKata.Locate('id_exame; id_tecnica',
+            VarArrayOf([dm.FDQListaAlunoExameexame_id.AsInteger,
+            dm.FDQListTecnicasAlunoNotastecnica_id.AsInteger]), []);
+          // Word.tableSplitCells(NumColumns:=2, NumRows:=1);
+          Word.justifyPara; // coloca o texto no esquerda
+          Word.bold(false); // tira o negrito
+          Word.FontSize(9); // fonte
+          Word.Insert(#32 + 'Posição' + #32 + formatfloat('#0.00',
+            dm.FDQAvKataPOSICAO.AsFloat));
+          Word.Insert(#32 + 'Técnicas' + #32 + formatfloat('#0.00',
+            dm.FDQAvKataTECNICAS.AsFloat));
+          Word.Insert(#32 + 'Ritmo' + #32 + formatfloat('#0.00',
+            dm.FDQAvKataRITMO.AsFloat));
+          Word.Insert(#32 + 'Visão' + #32 + formatfloat('#0.00',
+            dm.FDQAvKataVISAO.AsFloat));
+          Word.Insert(#32 + 'Firmeza/Kime' + #32 + formatfloat('#0.00',
+            dm.FDQAvKataKIME.AsFloat));
+          Word.Insert(#32 + 'Disposição' + #32 + formatfloat('#0.00',
+            dm.FDQAvKataDISPOSICAO.AsFloat));
+          Word.Insert(#32 + 'Zanchin' + #32 + formatfloat('#0.00',
+            dm.FDQAvKataZANCHIN.AsFloat));
+        end;
+
+        if dm.FDQListTecnicasAlunoNotasGrupo.AsString = 'Kumite' then
+        begin
+          dm.FDQKumite.Locate('id_exame; id_tecnica',
+            VarArrayOf([dm.FDQListaAlunoExameexame_id.AsInteger,
+            dm.FDQListTecnicasAlunoNotastecnica_id.AsInteger]), []);
+          Word.justifyPara; // coloca o texto no esquerda
+          Word.bold(false); // tira o negrito
+          Word.FontSize(9); // fonte
+          Word.Insert(#32 + 'Posição' + #32 + formatfloat('#0.00',
+            dm.FDQKumitePOSICAO.AsFloat));
+          Word.Insert(#32 + 'Técnicas' + #32 + formatfloat('#0.00',
+            dm.FDQKumiteTECNICAS.AsFloat));
+          Word.Insert(#32 + 'Distância da Base' + #32 + formatfloat('#0.00',
+            dm.FDQKumiteDISTBASE.AsFloat));
+          Word.Insert(#32 + 'Distância dos golpes' + #32 + formatfloat('#0.00',
+            dm.FDQKumiteDISTGOLPE.AsFloat));
+          Word.Insert(#32 + 'Ataques' + #32 + formatfloat('#0.00',
+            dm.FDQKumiteATAQUE.AsFloat));
+          Word.Insert(#32 + 'Direção golpes' + #32 + formatfloat('#0.00',
+            dm.FDQKumiteDIRECAO.AsFloat));
+          Word.Insert(#32 + 'Explorou o Kyo' + #32 + formatfloat('#0.00',
+            dm.FDQKumiteKYO.AsFloat));
+          Word.Insert(#32 + 'Manteve-se em Jitsu' + #32 + formatfloat('#0.00',
+            dm.FDQKumiteJITSU.AsFloat));
+          Word.Insert(#32 + 'Contra-ataques' + #32 + formatfloat('#0.00',
+            dm.FDQKumiteCONTRAATAQUE.AsFloat));
+          Word.Insert(#32 + 'Visão' + #32 + formatfloat('#0.00',
+            dm.FDQKumiteVISAO.AsFloat));
+          Word.Insert(#32 + 'Firmeza/Kime' + #32 + formatfloat('#0.00',
+            dm.FDQKumiteKIME.AsFloat));
+          Word.Insert(#32 + 'Disposição' + #32 + formatfloat('#0.00',
+            dm.FDQKumiteDISPOSICAO.AsFloat));
+          Word.Insert(#32 + 'Zanchin' + #32 + formatfloat('#0.00',
+            dm.FDQKumiteZANCHIN.AsFloat));
+        end;
+
         Word.NextCell;
         dm.FDQListTecnicasAlunoNotas.Next;
       end;
+
       // Word.FileSaveAs((ExtractFilePath(Application.ExeName) +
       // dm.FDQListaAlunoExamealuno_nome.AsString + '.doc'), 3);
       // Salva o arquivo

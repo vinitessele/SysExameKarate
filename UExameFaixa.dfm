@@ -826,8 +826,11 @@ object FExame: TFExame
       Top = 40
       Width = 233
       Height = 21
+      ItemIndex = 0
       TabOrder = 0
       Text = 'Vinicius Tessele'
+      Items.Strings = (
+        'Vinicius Tessele')
     end
     object EditAvaliador: TEdit
       Left = 255
@@ -844,8 +847,15 @@ object FExame: TFExame
       Top = 40
       Width = 154
       Height = 21
+      ItemIndex = 0
       TabOrder = 2
       Text = 'Kata'
+      Items.Strings = (
+        'Kata'
+        'Kihon'
+        'Teoria'
+        'Fisico'
+        'Kumite')
     end
   end
   object StatusBar1: TStatusBar
@@ -884,7 +894,7 @@ object FExame: TFExame
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
-    OnColExit = DBGrid1ColExit
+    OnDblClick = DBGrid1DblClick
     Columns = <
       item
         Expanded = False
@@ -963,13 +973,14 @@ object FExame: TFExame
   object BindSourceDB1: TBindSourceDB
     DataSet = DM.FDQExame
     ScopeMappings = <>
-    Left = 528
+    Left = 384
+    Top = 8
   end
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
-    Left = 580
-    Top = 65533
+    Left = 284
+    Top = 21
     object LinkListControlToField1: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB1
@@ -992,7 +1003,7 @@ object FExame: TFExame
   object BindSourceDB2: TBindSourceDB
     DataSet = DM.FDQGrupo
     ScopeMappings = <>
-    Left = 472
+    Left = 432
     Top = 8
   end
   object DataSource1: TDataSource

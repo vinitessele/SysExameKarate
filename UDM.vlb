@@ -65,7 +65,7 @@ Coordinates=869,1,168,33
 Coordinates=639,313,133,33
 
 [FDQfaixatecnica]
-Coordinates=515,467,95,33
+Coordinates=515,467,95,123
 
 [FDQfaixatecnicatecnica_id]
 Coordinates=639,365,145,33
@@ -95,7 +95,7 @@ Coordinates=639,469,139,33
 Coordinates=480,499,157,33
 
 []
-Coordinates=1724,521,195,33
+Coordinates=911,622,119,33
 
 [FDQAlunoByNomealuno_nome]
 Coordinates=888,261,167,33
@@ -164,7 +164,7 @@ Coordinates=1142,313,252,33
 Coordinates=1167,365,172,33
 
 [FDQExameNota]
-Coordinates=10,10,148,429
+Coordinates=10,10,148,447
 
 [FDQValidaAlunoExameexamefaixa_id]
 Coordinates=1167,417,199,33
@@ -480,4 +480,46 @@ Coordinates=1159,729,227,33
 
 [FDQExameAlunoTecnicaEXAME_NOTA]
 Coordinates=309,332,208,33
+
+[FDQListTecnicasAlunoMediasMEDIA]
+Coordinates=1093,1,195,33
+
+[FDQMediaExameMEDIA]
+Coordinates=470,427,131,33
+
+[FDQAvKataID_TECNICA]
+Coordinates=12,761,133,33
+
+[FDQAvKataID_ALUNO]
+Coordinates=1181,885,124,33
+
+[FDQAvKataID]
+Coordinates=378,406,81,33
+
+[FDQAvKata]
+Coordinates=379,759,71,249
+
+[FDQAvKataKIME]
+Coordinates=177,368,97,33
+
+[FDQAvKataDISPOSICAO]
+Coordinates=177,420,136,33
+
+[FDQAvKataTECNICAS]
+Coordinates=435,260,124,33
+
+[FDQAvKataZANCHIN]
+Coordinates=435,312,117,33
+
+[FDQAvKataVISAO]
+Coordinates=351,364,103,33
+
+[FDQAvKataRITMO]
+Coordinates=351,416,104,33
+
+[FDQAvKataPOSICAO]
+Coordinates=694,242,119,33
+
+[FDQAvKataID_EXAME]
+Coordinates=177,368,124,33
 

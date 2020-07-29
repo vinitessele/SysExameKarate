@@ -36,8 +36,8 @@ type
     Image2: TImage;
     procedure FormShow(Sender: TObject);
     procedure btnCarregarClick(Sender: TObject);
-    procedure DBGrid1ColExit(Sender: TObject);
     procedure BtnConfirmarClick(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,7 +51,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDM;
+uses UDM, UAvaliacaoKata, UKumite;
 
 procedure TFExame.btnCarregarClick(Sender: TObject);
 begin
@@ -85,7 +85,8 @@ begin
   dm.FDQMediaExame.Close;
   dm.FDQMediaExame.ParamByName('aluno').AsInteger :=
     dm.FDQExamealuno_id.AsInteger;
-  dm.FDQMediaExame.ParamByName('exameid').AsInteger := DM.FDQExameNotaEXAME_ID.AsInteger;
+  dm.FDQMediaExame.ParamByName('exameid').AsInteger :=
+    dm.FDQExameNotaEXAME_ID.AsInteger;
   dm.FDQMediaExame.ParamByName('grupo').AsString :=
     dm.FDQGrupogrupo_descricao.AsString;
   dm.FDQMediaExame.Open();
@@ -93,10 +94,19 @@ begin
   EditMedia.Text := dm.FDQMediaExamemedia.AsString;
 end;
 
-procedure TFExame.DBGrid1ColExit(Sender: TObject);
+procedure TFExame.DBGrid1DblClick(Sender: TObject);
 begin
   if dm.FDQExameNota.State in [dsEdit, dsInsert] then
     dm.FDQExameNotaexeme_avaliador.AsString := EditAvaliador.Text;
+
+  if dm.FDQGrupogrupo_descricao.AsString = 'Kata' then
+  begin
+    FrmAvaliaKata.ShowModal;
+  end;
+  if dm.FDQGrupogrupo_descricao.AsString = 'Kumite' then
+  begin
+    FrmKumite.ShowModal;
+  end;
 end;
 
 procedure TFExame.FormShow(Sender: TObject);

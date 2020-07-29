@@ -17,7 +17,9 @@ uses
   UAcademia in 'UAcademia.pas' {FAcademia},
   UResumo in 'UResumo.pas' {FResumo},
   UListExames in 'UListExames.pas' {FListaExames},
-  UFinalizaExames in 'UFinalizaExames.pas' {FFinalizar};
+  UFinalizaExames in 'UFinalizaExames.pas' {FFinalizar},
+  UAvaliacaoKata in 'UAvaliacaoKata.pas' {FrmAvaliaKata},
+  UKumite in 'UKumite.pas' {FrmKumite};
 
 {$R *.res}
 
@@ -40,5 +42,7 @@ begin
   Application.CreateForm(TFResumo, FResumo);
   Application.CreateForm(TFListaExames, FListaExames);
   Application.CreateForm(TFFinalizar, FFinalizar);
+  Application.CreateForm(TFrmAvaliaKata, FrmAvaliaKata);
+  Application.CreateForm(TFrmKumite, FrmKumite);
   Application.Run;
 end.
