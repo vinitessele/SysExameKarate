@@ -47,6 +47,7 @@ inherited FTecnicas: TFTecnicas
     Top = 120
     Width = 401
     Height = 21
+    CharCase = ecUpperCase
     DataField = 'tecnica_descricao'
     DataSource = DataSource1
     TabOrder = 3
@@ -91,10 +92,16 @@ inherited FTecnicas: TFTecnicas
     Top = 120
     Width = 145
     Height = 21
+    ItemIndex = 0
     TabOrder = 5
     Text = 'Kata'
     Items.Strings = (
-      '')
+      'Kata'
+      'Kihon'
+      'Teoria'
+      'Fisico'
+      'Kumite'
+      'Outros requisitos')
   end
   object DataSource1: TDataSource
     DataSet = DM.FDQTecnica
